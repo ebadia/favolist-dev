@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for controllers/users/users.service.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">controllers/users</a> users.service.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">32.39% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>23/71</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">52.17% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>24/46</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">13.89% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>5/36</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">31.67% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>19/60</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Component } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';<span class="branch-1 cbranch-no" title="branch not covered" ></span>
+<span class="missing-if-branch" title="else path not taken" >E</span>
+// import<span class="cstat-no" title="statement not covered" > { Cat } from './interfaces/cat.interface';<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ></span></span></span>
+import { UsersModule<span class="branch-1 cbranch-no" title="branch not covered" > }</span> fr<span class="branch-2 cbranch-no" title="branch not covered" >om './users.module'</span>
+import { User } from '../../entities/User.entity'
+import { Shop } from '../../entities/Shop.entity'
+<span class="missing-if-branch" title="else path not taken" >E</span>
+import { CreateUserDto } from './dto/create-user.dto'
+import { UpdateUserDto } from './dto/update-user.dto'
+import { AddRoleDto } from './dto/add-role.dto'
+import { CreateShopDto } from '../shops/dto/create-shop.dto'
+<span class="fstat-no" title="function not covered" ></span>
+@Com<span class="cstat-no" title="statement not covered" >ponent()<span class="fstat-no" title="function not covered" ></span></span>
+export class User<span class="fstat-no" title="function not covered" >sService {<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ></span></span></span></span>
+<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span></span></span>
+  constructor(<span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="fstat-no" title="function not covered" ></span></span></span></span>
+    @Inj<span class="cstat-no" title="statement not covered" >ectRepository(User)</span>
+    private readonly usersRepo: Repository&lt;User&gt;
+  ) {}
+&nbsp;
+  async findAll(): Promise&lt;User[]&gt; {
+&nbsp;
+    // return await this.usersRepo.createQueryBuilder('user')
+    //   .select(['user.id', 'user.first_name', 'user.last_name', 'user.email', 'user.username', 'user.mobile'])
+    //   .getMany()
+&nbsp;
+    return await this.usersRepo.find()
+&nbsp;
+&nbsp;
+  }<span class="fstat-no" title="function not covered" ></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span>
+  async find<span class="cstat-no" title="statement not covered" >One(id: number): Promise&lt;User&gt; {</span>
+&nbsp;
+    // return await this.usersRepo.createQueryBuilder('user')
+<span class="fstat-no" title="function not covered" >    //</span>   .select(['user.id', 'user.first_name', 'user.last_name', 'user.email', 'user.username', 'user.mobile'])
+    //  <span class="cstat-no" title="statement not covered" > .where("user.id=:id", {id})<span class="fstat-no" title="function not covered" ></span></span>
+    //   .ge<span class="cstat-no" title="statement not covered" >tOne()</span>
+&nbsp;
+    // I can do this because I have added option { select: false } in @Column for password
+<span class="fstat-no" title="function not covered" >    re</span>turn await this.usersRepo.findOneById(id, { relations: ["orders"]})
+  }<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span>
+<span class="cstat-no" title="statement not covered" ></span>
+  async create( user: CreateUserDto ): Promise&lt;CreateUserDto&gt; {
+    return await this.usersRepo.save( user )
+  }<span class="fstat-no" title="function not covered" ></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span>
+  async upda<span class="cstat-no" title="statement not covered" >te( id: number, user?: UpdateUserDto ): Promise&lt;User&gt; {</span>
+&nbsp;
+    await this.usersRepo.createQueryBuilder()
+      .update(User)
+      .set( user )
+      .where<span class="cstat-no" title="statement not covered" >("id=:id", {id})</span>
+      .execute()
+&nbsp;
+<span class="fstat-no" title="function not covered" >    re</span>turn await this.usersRepo.findOneById(id)
+  }<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span>
+<span class="cstat-no" title="statement not covered" ></span>
+  async addRole( id: number, role: AddRoleDto ): Promise&lt;User&gt; {
+&nbsp;
+    await this.usersRepo.createQueryBuilder()
+      .relat<span class="cstat-no" title="statement not covered" >ion( User, 'roles')</span>
+      .of(id)
+      .add(role.id)
+<span class="fstat-no" title="function not covered" ></span>
+    retu<span class="cstat-no" title="statement not covered" >rn await this.usersRepo.findOneById(id)<span class="fstat-no" title="function not covered" ></span></span>
+  }<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" ></span>
+  async addS<span class="cstat-no" title="statement not covered" >hopToUser( id: number, s</span>hop: CreateShopDto): Promise&lt;User&gt; {
+<span class="cstat-no" title="statement not covered" ></span>
+    const us<span class="cstat-no" title="statement not covered" >er = await this.usersRepo.findOneById( id, { relations: ["shops"] } )</span>
+    let aShop = Object.assign( new Shop(), shop )
+    user.shops.push(aShop)
+<span class="fstat-no" title="function not covered" >    aw</span>ait this.usersRepo.save(user)
+    retu<span class="cstat-no" title="statement not covered" >rn await this.usersRepo.findOneById( id<span class="fstat-no" title="function not covered" >, </span>{ relations: ["shops"] } )</span>
+<span class="cstat-no" title="statement not covered" ></span>
+  }<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span>
+<span class="cstat-no" title="statement not covered" ></span>
+  async removeShopFromUser( userId: number, shopId: number): Promise&lt;User&gt; {
+<span class="cstat-no" title="statement not covered" ></span>
+    const us<span class="cstat-no" title="statement not covered" >er = await this.usersRepo.findOne</span>ById( userId, { relations: ["shops"] } )
+    const aS<span class="cstat-no" title="statement not covered" >hop = user.shops.filter( obj =&gt; {</span>
+      return !(obj.id == shopId)
+    })
+<span class="fstat-no" title="function not covered" >    us</span>er.shops = aShop
+    awai<span class="cstat-no" title="statement not covered" >t this.usersRepo.save(user)<span class="fstat-no" title="function not covered" ></span></span>
+    return a<span class="cstat-no" title="statement not covered" >wait this.usersRepo.findOneById( userId, { relations: ["shops"] } )</span>
+&nbsp;
+  }
+&nbsp;
+&nbsp;
+  async delete( id: number ): Promise&lt;void&gt; {
+<span class="fstat-no" title="function not covered" >    aw</span>ait this.usersRepo.createQueryBuilder()
+      .d<span class="cstat-no" title="statement not covered" >elete()<span class="fstat-no" title="function not covered" ></span></span>
+      .where<span class="cstat-no" title="statement not covered" >('id=:id', {id})</span>
+      .execute()
+  }
+<span class="fstat-no" title="function not covered" ></span>
+  async <span class="cstat-no" title="statement not covered" >findWithShops(): Promise&lt;User[]&gt; {<span class="fstat-no" title="function not covered" ></span></span>
+    return a<span class="cstat-no" title="statement not covered" >wait this.usersRepo.find( {relations: ['shops']} )</span>
+  }
+&nbsp;
+  as<span class="fstat-no" title="function not covered" >yn</span>c findOneWithShops(id: number): Promise&lt;User&gt; {
+    retu<span class="cstat-no" title="statement not covered" >rn await this.usersRepo.findOneById( id<span class="fstat-no" title="function not covered" >, </span>{relations: ['shops']} )</span>
+  }<span class="cstat-no" title="statement not covered" ></span>
+&nbsp;
+  async findOneAdminShop(id: number): Promise&lt;User&gt; {
+<span class="fstat-no" title="function not covered" >    re</span>turn await this.usersRepo.findOneById( id, {relations: ['shop']} )
+  }<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ></span></span>
+<span class="cstat-no" title="statement not covered" ></span>
+  async saveOrder(user: User): Promise&lt;User&gt; {
+    return await this.usersRepo.save( user )
+  }
+&nbsp;
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Feb 04 2018 18:47:10 GMT+0100 (CET)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

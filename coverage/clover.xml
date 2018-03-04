@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1517766430616" clover="3.2.0">
+  <project timestamp="1517766430616" name="All files">
+    <metrics statements="450" coveredstatements="317" conditionals="540" coveredconditionals="306" methods="155" coveredmethods="43" elements="1145" coveredelements="666" complexity="0" loc="450" ncloc="450" packages="6" files="16" classes="16">
+      <package name="common.interfaces">
+        <metrics statements="11" coveredstatements="11" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
+        <file name="enums.ts" path="/Users/ebadia/Developer/node/favolist/backend/src/common/interfaces/enums.ts">
+          <metrics statements="11" coveredstatements="11" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
+          <line num="2" count="1" type="stmt"/>
+          <line num="4" count="1" type="stmt"/>
+          <line num="5" count="1" type="stmt"/>
+          <line num="6" count="1" type="stmt"/>
+          <line num="7" count="1" type="stmt"/>
+          <line num="8" count="1" type="stmt"/>
+          <line num="9" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="13" count="1" type="stmt"/>
+          <line num="14" count="1" type="stmt"/>
+          <line num="15" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="common.pipes">
+        <metrics statements="51" coveredstatements="22" conditionals="70" coveredconditionals="22" methods="20" coveredmethods="2"/>
+        <file name="parse-int.pipe.ts" path="/Users/ebadia/Developer/node/favolist/backend/src/common/pipes/parse-int.pipe.ts">
+          <metrics statements="21" coveredstatements="10" conditionals="33" coveredconditionals="11" methods="9" coveredmethods="1"/>
+          <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="3" count="1" type="cond" truecount="1" falsecount="3"/>
+          <line num="4" count="1" type="cond" truecount="3" falsecount="1"/>
+          <line num="5" count="0" type="cond" truecount="0" falsecount="8"/>
+          <line num="6" count="1" type="cond" truecount="1" falsecount="2"/>
+          <line num="8" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="9" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="10" count="0" type="stmt"/>
+          <line num="11" count="0" type="stmt"/>
+          <line num="12" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="13" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="16" count="1" type="stmt"/>
+          <line num="17" count="1" type="stmt"/>
+          <line num="18" count="1" type="stmt"/>
+          <line num="20" count="0" type="stmt"/>
+          <line num="21" count="0" type="stmt"/>
+          <line num="22" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="23" count="0" type="stmt"/>
+          <line num="25" count="0" type="stmt"/>
+          <line num="29" count="1" type="stmt"/>
+          <line num="32" count="1" type="stmt"/>
+        </file>
+        <file name="validation.pipe.ts" path="/Users/ebadia/Developer/node/favolist/backend/src/common/pipes/validation.pipe.ts">
+          <metrics statements="30" coveredstatements="12" conditionals="37" coveredconditionals="11" methods="11" coveredmethods="1"/>
+          <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="3" count="1" type="cond" truecount="1" falsecount="3"/>
+          <line num="4" count="1" type="cond" truecount="3" falsecount="1"/>
+          <line num="5" count="0" type="cond" truecount="0" falsecount="8"/>
+          <line num="6" count="1" type="cond" truecount="1" falsecount="2"/>
+          <line num="8" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="9" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="10" count="0" type="stmt"/>
+          <line num="11" count="0" type="stmt"/>
+          <line num="12" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="13" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="16" count="1" type="stmt"/>
+          <line num="17" count="1" type="stmt"/>
+          <line num="18" count="1" type="stmt"/>
+          <line num="19" count="1" type="stmt"/>
+          <line num="20" count="1" type="stmt"/>
+          <line num="22" count="0" type="stmt"/>
+          <line num="23" count="0" type="stmt"/>
+          <line num="24" count="0" type="stmt"/>
+          <line num="25" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="26" count="0" type="stmt"/>
+          <line num="28" count="0" type="stmt"/>
+          <line num="29" count="0" type="stmt"/>
+          <line num="30" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="31" count="0" type="stmt"/>
+          <line num="33" count="0" type="stmt"/>
+          <line num="37" count="0" type="stmt"/>
+          <line num="38" count="0" type="stmt"/>
+          <line num="41" count="1" type="stmt"/>
+          <line num="44" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="controllers.shops.dto">
+        <metrics statements="13" coveredstatements="12" conditionals="29" coveredconditionals="16" methods="2" coveredmethods="2"/>
+        <file name="create-shop.dto.ts" path="/Users/ebadia/Developer/node/favolist/backend/src/controllers/shops/dto/create-shop.dto.ts">
+          <metrics statements="13" coveredstatements="12" conditionals="29" coveredconditionals="16" methods="2" coveredmethods="2"/>
+          <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="3" count="3" type="cond" truecount="2" falsecount="2"/>
+          <line num="4" count="3" type="cond" truecount="3" falsecount="1"/>
+          <line num="5" count="0" type="cond" truecount="0" falsecount="8"/>
+          <line num="6" count="3" type="cond" truecount="2" falsecount="1"/>
+          <line num="8" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="9" count="3" type="cond" truecount="3" falsecount="1"/>
+          <line num="11" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="15" count="1" type="stmt"/>
+          <line num="19" count="1" type="stmt"/>
+          <line num="23" count="1" type="stmt"/>
+          <line num="27" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="controllers.users">
+        <metrics statements="130" coveredstatements="59" conditionals="112" coveredconditionals="74" methods="69" coveredmethods="17"/>
+        <file name="users.controller.ts" path="/Users/ebadia/Developer/node/favolist/backend/src/controllers/users/users.controller.ts">
+          <metrics statements="70" coveredstatements="40" conditionals="66" coveredconditionals="50" methods="33" coveredmethods="12"/>
+          <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="3" count="12" type="cond" truecount="3" falsecount="1"/>
+          <line num="4" count="12" type="cond" truecount="3" falsecount="1"/>
+          <line num="5" count="0" type="cond" truecount="0" falsecount="8"/>
+          <line num="6" count="12" type="cond" truecount="3" falsecount="0"/>
+          <line num="8" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="9" count="34" type="cond" truecount="3" falsecount="1"/>
+          <line num="11" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="12" count="13" type="stmt"/>
+          <line num="14" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="15" count="1" type="cond" truecount="2" falsecount="0"/>
+          <line num="16" count="1" type="stmt"/>
+          <line num="17" count="0" type="stmt"/>
+          <line num="18" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="19" count="1" type="cond" truecount="2" falsecount="0"/>
+          <line num="22" count="1" type="stmt"/>
+          <line num="23" count="1" type="stmt"/>
+          <line num="24" count="1" type="stmt"/>
+          <line num="25" count="1" type="stmt"/>
+          <line num="26" count="1" type="stmt"/>
+          <line num="27" count="1" type="stmt"/>
+          <line num="28" count="1" type="stmt"/>
+          <line num="29" count="1" type="stmt"/>
+          <line num="30" count="1" type="stmt"/>
+          <line num="31" count="1" type="stmt"/>
+          <line num="32" count="1" type="stmt"/>
+          <line num="34" count="3" type="stmt"/>
+          <line num="37" count="1" type="stmt"/>
+          <line num="38" count="1" type="stmt"/>
+          <line num="42" count="0" type="stmt"/>
+          <line num="43" count="0" type="stmt"/>
+          <line num="47" count="0" type="stmt"/>
+          <line num="48" count="0" type="stmt"/>
+          <line num="52" count="0" type="stmt"/>
+          <line num="53" count="0" type="stmt"/>
+          <line num="57" count="0" type="stmt"/>
+          <line num="58" count="0" type="stmt"/>
+          <line num="62" count="0" type="stmt"/>
+          <line num="63" count="0" type="stmt"/>
+          <line num="64" count="0" type="stmt"/>
+          <line num="67" count="0" type="stmt"/>
+          <line num="72" count="0" type="stmt"/>
+          <line num="73" count="0" type="stmt"/>
+          <line num="74" count="0" type="stmt"/>
+          <line num="77" count="0" type="stmt"/>
+          <line num="82" count="0" type="stmt"/>
+          <line num="83" count="0" type="stmt"/>
+          <line num="84" count="0" type="stmt"/>
+          <line num="87" count="0" type="stmt"/>
+          <line num="92" count="0" type="stmt"/>
+          <line num="93" count="0" type="stmt"/>
+          <line num="94" count="0" type="stmt"/>
+          <line num="97" count="0" type="stmt"/>
+          <line num="102" count="0" type="stmt"/>
+          <line num="103" count="0" type="stmt"/>
+          <line num="107" count="0" type="stmt"/>
+          <line num="108" count="0" type="stmt"/>
+          <line num="112" count="1" type="stmt"/>
+          <line num="118" count="1" type="stmt"/>
+          <line num="124" count="1" type="stmt"/>
+          <line num="131" count="1" type="stmt"/>
+          <line num="138" count="1" type="stmt"/>
+          <line num="145" count="1" type="stmt"/>
+          <line num="153" count="1" type="stmt"/>
+          <line num="161" count="1" type="stmt"/>
+          <line num="169" count="1" type="stmt"/>
+          <line num="177" count="1" type="stmt"/>
+          <line num="184" count="1" type="stmt"/>
+          <line num="191" count="1" type="stmt"/>
+          <line num="195" count="1" type="stmt"/>
+        </file>
+        <file name="users.service.ts" path="/Users/ebadia/Developer/node/favolist/backend/src/controllers/users/users.service.ts">
+          <metrics statements="60" coveredstatements="19" conditionals="46" coveredconditionals="24" methods="36" coveredmethods="5"/>
+          <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="3" count="1" type="cond" truecount="1" falsecount="3"/>
+          <line num="4" count="1" type="cond" truecount="3" falsecount="1"/>
+          <line num="5" count="0" type="cond" truecount="0" falsecount="8"/>
+          <line num="6" count="1" type="cond" truecount="1" falsecount="2"/>
+          <line num="8" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="9" count="1" type="cond" truecount="3" falsecount="1"/>
+          <line num="11" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="14" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="15" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="16" count="0" type="stmt"/>
+          <line num="17" count="0" type="stmt"/>
+          <line num="18" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="22" count="1" type="stmt"/>
+          <line num="23" count="1" type="stmt"/>
+          <line num="24" count="1" type="stmt"/>
+          <line num="25" count="1" type="stmt"/>
+          <line num="26" count="1" type="stmt"/>
+          <line num="27" count="1" type="stmt"/>
+          <line num="28" count="1" type="stmt"/>
+          <line num="30" count="3" type="stmt"/>
+          <line num="33" count="0" type="stmt"/>
+          <line num="34" count="0" type="stmt"/>
+          <line num="38" count="0" type="stmt"/>
+          <line num="39" count="0" type="stmt"/>
+          <line num="43" count="0" type="stmt"/>
+          <line num="44" count="0" type="stmt"/>
+          <line num="48" count="0" type="stmt"/>
+          <line num="49" count="0" type="stmt"/>
+          <line num="54" count="0" type="stmt"/>
+          <line num="58" count="0" type="stmt"/>
+          <line num="59" count="0" type="stmt"/>
+          <line num="63" count="0" type="stmt"/>
+          <line num="67" count="0" type="stmt"/>
+          <line num="68" count="0" type="stmt"/>
+          <line num="69" count="0" type="stmt"/>
+          <line num="70" count="0" type="stmt"/>
+          <line num="71" count="0" type="stmt"/>
+          <line num="72" count="0" type="stmt"/>
+          <line num="76" count="0" type="stmt"/>
+          <line num="77" count="0" type="stmt"/>
+          <line num="78" count="0" type="stmt"/>
+          <line num="79" count="0" type="stmt"/>
+          <line num="81" count="0" type="stmt"/>
+          <line num="82" count="0" type="stmt"/>
+          <line num="83" count="0" type="stmt"/>
+          <line num="87" count="0" type="stmt"/>
+          <line num="88" count="0" type="stmt"/>
+          <line num="95" count="0" type="stmt"/>
+          <line num="96" count="0" type="stmt"/>
+          <line num="100" count="0" type="stmt"/>
+          <line num="101" count="0" type="stmt"/>
+          <line num="105" count="0" type="stmt"/>
+          <line num="106" count="0" type="stmt"/>
+          <line num="110" count="0" type="stmt"/>
+          <line num="111" count="0" type="stmt"/>
+          <line num="115" count="1" type="stmt"/>
+          <line num="120" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="controllers.users.dto">
+        <metrics statements="45" coveredstatements="42" conditionals="87" coveredconditionals="48" methods="6" coveredmethods="6"/>
+        <file name="add-role.dto.ts" path="/Users/ebadia/Developer/node/favolist/backend/src/controllers/users/dto/add-role.dto.ts">
+          <metrics statements="12" coveredstatements="11" conditionals="29" coveredconditionals="16" methods="2" coveredmethods="2"/>
+          <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="3" count="2" type="cond" truecount="2" falsecount="2"/>
+          <line num="4" count="2" type="cond" truecount="3" falsecount="1"/>
+          <line num="5" count="0" type="cond" truecount="0" falsecount="8"/>
+          <line num="6" count="2" type="cond" truecount="2" falsecount="1"/>
+          <line num="8" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="9" count="2" type="cond" truecount="3" falsecount="1"/>
+          <line num="11" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="15" count="1" type="stmt"/>
+          <line num="19" count="1" type="stmt"/>
+          <line num="23" count="1" type="stmt"/>
+        </file>
+        <file name="create-user.dto.ts" path="/Users/ebadia/Developer/node/favolist/backend/src/controllers/users/dto/create-user.dto.ts">
+          <metrics statements="17" coveredstatements="16" conditionals="29" coveredconditionals="16" methods="2" coveredmethods="2"/>
+          <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="3" count="7" type="cond" truecount="2" falsecount="2"/>
+          <line num="4" count="7" type="cond" truecount="3" falsecount="1"/>
+          <line num="5" count="0" type="cond" truecount="0" falsecount="8"/>
+          <line num="6" count="7" type="cond" truecount="2" falsecount="1"/>
+          <line num="8" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="9" count="7" type="cond" truecount="3" falsecount="1"/>
+          <line num="11" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="15" count="1" type="stmt"/>
+          <line num="19" count="1" type="stmt"/>
+          <line num="23" count="1" type="stmt"/>
+          <line num="27" count="1" type="stmt"/>
+          <line num="31" count="1" type="stmt"/>
+          <line num="35" count="1" type="stmt"/>
+          <line num="39" count="1" type="stmt"/>
+          <line num="43" count="1" type="stmt"/>
+        </file>
+        <file name="update-user.dto.ts" path="/Users/ebadia/Developer/node/favolist/backend/src/controllers/users/dto/update-user.dto.ts">
+          <metrics statements="16" coveredstatements="15" conditionals="29" coveredconditionals="16" methods="2" coveredmethods="2"/>
+          <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="3" count="6" type="cond" truecount="2" falsecount="2"/>
+          <line num="4" count="6" type="cond" truecount="3" falsecount="1"/>
+          <line num="5" count="0" type="cond" truecount="0" falsecount="8"/>
+          <line num="6" count="6" type="cond" truecount="2" falsecount="1"/>
+          <line num="8" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="9" count="6" type="cond" truecount="3" falsecount="1"/>
+          <line num="11" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="15" count="1" type="stmt"/>
+          <line num="19" count="1" type="stmt"/>
+          <line num="23" count="1" type="stmt"/>
+          <line num="27" count="1" type="stmt"/>
+          <line num="31" count="1" type="stmt"/>
+          <line num="35" count="1" type="stmt"/>
+          <line num="39" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="entities">
+        <metrics statements="200" coveredstatements="171" conditionals="238" coveredconditionals="142" methods="56" coveredmethods="14"/>
+        <file name="Available.entity.ts" path="/Users/ebadia/Developer/node/favolist/backend/src/entities/Available.entity.ts">
+          <metrics statements="22" coveredstatements="19" conditionals="34" coveredconditionals="20" methods="5" coveredmethods="2"/>
+          <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="3" count="7" type="cond" truecount="3" falsecount="1"/>
+          <line num="4" count="7" type="cond" truecount="3" falsecount="1"/>
+          <line num="5" count="0" type="cond" truecount="0" falsecount="8"/>
+          <line num="6" count="7" type="cond" truecount="2" falsecount="1"/>
+          <line num="8" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="9" count="6" type="cond" truecount="3" falsecount="1"/>
+          <line num="11" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="13" count="1" type="stmt"/>
+          <line num="14" count="1" type="stmt"/>
+          <line num="15" count="1" type="stmt"/>
+          <line num="17" count="0" type="stmt"/>
+          <line num="31" count="1" type="stmt"/>
+          <line num="35" count="1" type="stmt"/>
+          <line num="39" count="1" type="stmt"/>
+          <line num="43" count="1" type="stmt"/>
+          <line num="49" count="1" type="stmt"/>
+          <line num="55" count="1" type="stmt"/>
+          <line num="56" count="0" type="stmt"/>
+          <line num="59" count="1" type="stmt"/>
+          <line num="62" count="1" type="stmt"/>
+        </file>
+        <file name="Item.entity.ts" path="/Users/ebadia/Developer/node/favolist/backend/src/entities/Item.entity.ts">
+          <metrics statements="24" coveredstatements="21" conditionals="39" coveredconditionals="24" methods="6" coveredmethods="2"/>
+          <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="3" count="8" type="cond" truecount="3" falsecount="1"/>
+          <line num="4" count="8" type="cond" truecount="3" falsecount="1"/>
+          <line num="5" count="0" type="cond" truecount="0" falsecount="8"/>
+          <line num="6" count="8" type="cond" truecount="2" falsecount="1"/>
+          <line num="8" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="9" count="7" type="cond" truecount="3" falsecount="1"/>
+          <line num="11" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="13" count="1" type="stmt"/>
+          <line num="14" count="1" type="stmt"/>
+          <line num="15" count="1" type="stmt"/>
+          <line num="16" count="1" type="stmt"/>
+          <line num="18" count="1" type="stmt"/>
+          <line num="22" count="1" type="stmt"/>
+          <line num="26" count="1" type="stmt"/>
+          <line num="30" count="1" type="stmt"/>
+          <line num="34" count="1" type="stmt"/>
+          <line num="42" count="1" type="stmt"/>
+          <line num="43" count="0" type="stmt"/>
+          <line num="47" count="1" type="stmt"/>
+          <line num="48" count="0" type="stmt"/>
+          <line num="51" count="1" type="stmt"/>
+          <line num="54" count="1" type="stmt"/>
+        </file>
+        <file name="Order.entity.ts" path="/Users/ebadia/Developer/node/favolist/backend/src/entities/Order.entity.ts">
+          <metrics statements="29" coveredstatements="24" conditionals="39" coveredconditionals="23" methods="9" coveredmethods="2"/>
+          <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="3" count="10" type="cond" truecount="3" falsecount="1"/>
+          <line num="4" count="10" type="cond" truecount="3" falsecount="1"/>
+          <line num="5" count="0" type="cond" truecount="0" falsecount="8"/>
+          <line num="6" count="10" type="cond" truecount="2" falsecount="1"/>
+          <line num="8" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="9" count="9" type="cond" truecount="3" falsecount="1"/>
+          <line num="11" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="13" count="1" type="stmt"/>
+          <line num="14" count="1" type="stmt"/>
+          <line num="15" count="1" type="stmt"/>
+          <line num="16" count="1" type="stmt"/>
+          <line num="17" count="1" type="stmt"/>
+          <line num="19" count="0" type="stmt"/>
+          <line num="33" count="1" type="stmt"/>
+          <line num="37" count="1" type="stmt"/>
+          <line num="41" count="1" type="stmt"/>
+          <line num="45" count="1" type="stmt"/>
+          <line num="51" count="1" type="stmt"/>
+          <line num="57" count="1" type="stmt"/>
+          <line num="65" count="1" type="stmt"/>
+          <line num="66" count="0" type="stmt"/>
+          <line num="72" count="1" type="stmt"/>
+          <line num="73" count="0" type="stmt"/>
+          <line num="76" count="1" type="stmt"/>
+          <line num="77" count="0" type="stmt"/>
+          <line num="80" count="1" type="stmt"/>
+          <line num="83" count="1" type="stmt"/>
+        </file>
+        <file name="Product.entity.ts" path="/Users/ebadia/Developer/node/favolist/backend/src/entities/Product.entity.ts">
+          <metrics statements="32" coveredstatements="27" conditionals="34" coveredconditionals="20" methods="10" coveredmethods="2"/>
+          <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="3" count="12" type="cond" truecount="3" falsecount="1"/>
+          <line num="4" count="12" type="cond" truecount="3" falsecount="1"/>
+          <line num="5" count="0" type="cond" truecount="0" falsecount="8"/>
+          <line num="6" count="12" type="cond" truecount="2" falsecount="1"/>
+          <line num="8" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="9" count="11" type="cond" truecount="3" falsecount="1"/>
+          <line num="11" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="13" count="1" type="stmt"/>
+          <line num="14" count="1" type="stmt"/>
+          <line num="15" count="1" type="stmt"/>
+          <line num="16" count="1" type="stmt"/>
+          <line num="17" count="1" type="stmt"/>
+          <line num="18" count="1" type="stmt"/>
+          <line num="20" count="1" type="stmt"/>
+          <line num="24" count="1" type="stmt"/>
+          <line num="28" count="1" type="stmt"/>
+          <line num="32" count="1" type="stmt"/>
+          <line num="39" count="1" type="stmt"/>
+          <line num="43" count="1" type="stmt"/>
+          <line num="49" count="1" type="stmt"/>
+          <line num="58" count="1" type="stmt"/>
+          <line num="59" count="0" type="stmt"/>
+          <line num="66" count="1" type="stmt"/>
+          <line num="67" count="0" type="stmt"/>
+          <line num="70" count="1" type="stmt"/>
+          <line num="71" count="0" type="stmt"/>
+          <line num="74" count="1" type="stmt"/>
+          <line num="75" count="0" type="stmt"/>
+          <line num="78" count="1" type="stmt"/>
+          <line num="81" count="1" type="stmt"/>
+        </file>
+        <file name="Role.entity.ts" path="/Users/ebadia/Developer/node/favolist/backend/src/entities/Role.entity.ts">
+          <metrics statements="19" coveredstatements="17" conditionals="29" coveredconditionals="17" methods="4" coveredmethods="2"/>
+          <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="3" count="6" type="cond" truecount="3" falsecount="1"/>
+          <line num="4" count="6" type="cond" truecount="3" falsecount="1"/>
+          <line num="5" count="0" type="cond" truecount="0" falsecount="8"/>
+          <line num="6" count="6" type="cond" truecount="2" falsecount="1"/>
+          <line num="8" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="9" count="5" type="cond" truecount="3" falsecount="1"/>
+          <line num="11" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="13" count="1" type="stmt"/>
+          <line num="14" count="1" type="stmt"/>
+          <line num="16" count="1" type="stmt"/>
+          <line num="20" count="1" type="stmt"/>
+          <line num="24" count="1" type="stmt"/>
+          <line num="28" count="1" type="stmt"/>
+          <line num="36" count="1" type="stmt"/>
+          <line num="37" count="0" type="stmt"/>
+          <line num="44" count="1" type="stmt"/>
+          <line num="47" count="1" type="stmt"/>
+        </file>
+        <file name="Shop.entity.ts" path="/Users/ebadia/Developer/node/favolist/backend/src/entities/Shop.entity.ts">
+          <metrics statements="37" coveredstatements="32" conditionals="29" coveredconditionals="17" methods="10" coveredmethods="2"/>
+          <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="3" count="18" type="cond" truecount="3" falsecount="1"/>
+          <line num="4" count="18" type="cond" truecount="3" falsecount="1"/>
+          <line num="5" count="0" type="cond" truecount="0" falsecount="8"/>
+          <line num="6" count="18" type="cond" truecount="2" falsecount="1"/>
+          <line num="8" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="9" count="17" type="cond" truecount="3" falsecount="1"/>
+          <line num="11" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="13" count="1" type="stmt"/>
+          <line num="14" count="1" type="stmt"/>
+          <line num="15" count="1" type="stmt"/>
+          <line num="16" count="1" type="stmt"/>
+          <line num="17" count="1" type="stmt"/>
+          <line num="19" count="1" type="stmt"/>
+          <line num="23" count="1" type="stmt"/>
+          <line num="27" count="1" type="stmt"/>
+          <line num="31" count="1" type="stmt"/>
+          <line num="39" count="1" type="stmt"/>
+          <line num="46" count="1" type="stmt"/>
+          <line num="53" count="1" type="stmt"/>
+          <line num="60" count="1" type="stmt"/>
+          <line num="67" count="1" type="stmt"/>
+          <line num="74" count="1" type="stmt"/>
+          <line num="81" count="1" type="stmt"/>
+          <line num="89" count="1" type="stmt"/>
+          <line num="96" count="1" type="stmt"/>
+          <line num="103" count="1" type="stmt"/>
+          <line num="104" count="0" type="stmt"/>
+          <line num="107" count="1" type="stmt"/>
+          <line num="108" count="0" type="stmt"/>
+          <line num="114" count="1" type="stmt"/>
+          <line num="115" count="0" type="stmt"/>
+          <line num="118" count="1" type="stmt"/>
+          <line num="119" count="0" type="stmt"/>
+          <line num="126" count="1" type="stmt"/>
+          <line num="129" count="1" type="stmt"/>
+        </file>
+        <file name="User.entity.ts" path="/Users/ebadia/Developer/node/favolist/backend/src/entities/User.entity.ts">
+          <metrics statements="37" coveredstatements="31" conditionals="34" coveredconditionals="21" methods="12" coveredmethods="2"/>
+          <line num="2" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="3" count="16" type="cond" truecount="3" falsecount="1"/>
+          <line num="4" count="16" type="cond" truecount="3" falsecount="1"/>
+          <line num="5" count="0" type="cond" truecount="0" falsecount="8"/>
+          <line num="6" count="16" type="cond" truecount="2" falsecount="1"/>
+          <line num="8" count="1" type="cond" truecount="3" falsecount="0"/>
+          <line num="9" count="15" type="cond" truecount="3" falsecount="1"/>
+          <line num="11" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="13" count="1" type="stmt"/>
+          <line num="14" count="1" type="stmt"/>
+          <line num="15" count="1" type="stmt"/>
+          <line num="16" count="1" type="stmt"/>
+          <line num="17" count="1" type="stmt"/>
+          <line num="18" count="1" type="stmt"/>
+          <line num="20" count="1" type="stmt"/>
+          <line num="24" count="1" type="stmt"/>
+          <line num="28" count="1" type="stmt"/>
+          <line num="32" count="1" type="stmt"/>
+          <line num="39" count="1" type="stmt"/>
+          <line num="46" count="1" type="stmt"/>
+          <line num="54" count="1" type="stmt"/>
+          <line num="62" count="1" type="stmt"/>
+          <line num="69" count="1" type="stmt"/>
+          <line num="77" count="1" type="stmt"/>
+          <line num="87" count="1" type="stmt"/>
+          <line num="88" count="0" type="stmt"/>
+          <line num="91" count="1" type="stmt"/>
+          <line num="92" count="0" type="stmt"/>
+          <line num="95" count="1" type="stmt"/>
+          <line num="96" count="0" type="stmt"/>
+          <line num="100" count="1" type="stmt"/>
+          <line num="101" count="0" type="stmt"/>
+          <line num="104" count="1" type="stmt"/>
+          <line num="105" count="0" type="stmt"/>
+          <line num="108" count="1" type="stmt"/>
+          <line num="111" count="1" type="stmt"/>
+        </file>
+      </package>
+    </metrics>
+  </project>
+</coverage>

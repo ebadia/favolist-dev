@@ -1,0 +1,62 @@
+{
+  "name": "favolist-backend",
+  "version": "1.0.0",
+  "description": "Backend for favolist application",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "start:watch": "nodemon",
+    "prestart:prod": "tsc",
+    "start:prod": "node dist/main.js",
+    "test": "mocha --require ts-node/register src/**/*.spec.ts",
+    "testm": "NODE_ENV=test mocha --require ts-node/register src/**/*.spec.ts",
+    "test-watch": "nodemon --exec 'npm run testm'"
+  },
+  "dependencies": {
+    "@nestjs/common": "^4.4.0",
+    "@nestjs/core": "^4.4.0",
+    "@nestjs/microservices": "^4.4.0",
+    "@nestjs/testing": "^4.4.0",
+    "@nestjs/typeorm": "^2.0.0",
+    "@nestjs/websockets": "^4.4.0",
+    "jsonwebtoken": "^8.1.0",
+    "lodash": "^4.17.4",
+    "moment": "^2.20.1",
+    "passport": "^0.4.0",
+    "passport-jwt": "^3.0.1",
+    "pg": "^7.4.0",
+    "redis": "^2.7.1",
+    "reflect-metadata": "^0.1.10",
+    "rxjs": "^5.4.0",
+    "typeorm": "^0.1.9",
+    "typescript": "^2.5.2"
+  },
+  "devDependencies": {
+    "@types/chai": "^3.5.2",
+    "@types/jest": "^20.0.8",
+    "@types/mocha": "^2.2.41",
+    "@types/node": "^8.0.28",
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
+    "jest": "^20.0.4",
+    "mocha": "^4.1.0",
+    "nodemon": "^1.12.1",
+    "sinon": "^4.2.2",
+    "superagent": "^3.8.2",
+    "supertest": "^3.0.0",
+    "ts-jest": "^20.0.14",
+    "ts-node": "^3.3.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.ts$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json"
+    ]
+  }
+}
