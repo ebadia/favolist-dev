@@ -37,11 +37,12 @@ export class AvailablesService {
     // if product exists on available the same day return
     const exists = await this.availablesRepo.query(`
         SELECT * FROM available
-         WHERE available.'productId' = ${product.product.id}
+         WHERE "available"."productId" = ${product.product.id}
          AND available.day = '${product.day}'
         ;
-        `)
-    if (!exists) {
+    `)
+    // exists is an array returned from the query
+    if (exists.length === 0) {
       const aProduct = Object.assign(new Available(), product)
       return await this.availablesRepo.save(aProduct)
     } else {

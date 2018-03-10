@@ -13,6 +13,7 @@
     "test-watch": "nodemon --exec 'npm run testm'"
   },
   "dependencies": {
+    "@ionic/pro": "^1.0.20",
     "@nestjs/common": "^4.4.0",
     "@nestjs/core": "^4.4.0",
     "@nestjs/microservices": "^4.4.0",

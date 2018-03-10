@@ -1,10 +1,10 @@
 {
   "type": "postgres",
-  "host": "localhost",
+  "host": "ideatius.chyzqkruatjk.eu-west-1.rds.amazonaws.com",
   "port": 5432,
-  "username": "postgres",
+  "username": "enricbadia",
   "password": "tincfeina",
-  "database": "favolist_dev",
+  "database": "favolist_db",
   "entities": ["src/**/*.entity{.ts,.js}"],
   "migrations": ["src/**/*.migration{.ts,.js}"],
   "synchronize": true,
@@ -12,5 +12,4 @@
   "cli": {
     "entitiesDir": "src/entities"
   }
-
 }
