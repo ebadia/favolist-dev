@@ -67,11 +67,7 @@ export class Product {
 
   // Relations
 
-  @ManyToOne(type => Shop, shop => shop.products, {
-    cascadeInsert: true,
-    cascadeUpdate: true,
-    cascadeRemove: true
-  })
+  @ManyToOne(type => Shop, shop => shop.products)
   shop: Shop
 
   @ManyToMany(type => User, user => user.products)
