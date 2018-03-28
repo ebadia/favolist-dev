@@ -32,6 +32,7 @@ export class AccountsController {
       const response = await this.accountsService.login(user)
       const theUser = await this.accountsService.findOne(user)
       return res
+        .set('Access-Control-Expose-Headers', 'Authorization')
         .set('Authorization', 'Bearer ' + response.access_token)
         .send(theUser)
     } catch (error) {

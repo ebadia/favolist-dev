@@ -16,5 +16,6 @@ export class CreateProductDto {
   @IsString() readonly name: string
   @IsNumber() readonly price: number
   @IsNotEmpty() readonly shop: AssignShopDto
-  @IsNotEmpty() readonly days: any
+  @IsOptional() readonly description: string
+  @IsOptional() readonly image: string
 }

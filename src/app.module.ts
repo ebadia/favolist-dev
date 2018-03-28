@@ -1,8 +1,14 @@
-import { Module, NestModule, MiddlewaresConsumer } from '@nestjs/common'
+import {
+  Module,
+  NestModule,
+  MiddlewaresConsumer,
+  RequestMethod
+} from '@nestjs/common'
 
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { Connection } from 'typeorm'
 import { CorsMiddleware } from '@nest-middlewares/cors'
+import { CorsMyMiddleware } from './common/middlewares/cors.middleware'
 
 import { AppController } from './app.controller'
 import { AccountsModule } from './controllers/accounts/accounts.module'
@@ -44,6 +50,8 @@ export class ApplicationModule implements NestModule {
       .apply(RequestTime)
       .forRoutes(AppController)
       .apply(CorsMiddleware)
-      .forRoutes(AppController)
+      .forRoutes({ path: '*', method: RequestMethod.ALL })
+    // .apply(CorsMyMiddleware)
+    // .forRoutes({ path: '*', method: RequestMethod.ALL })
   }
 }
