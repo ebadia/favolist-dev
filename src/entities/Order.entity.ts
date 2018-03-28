@@ -80,15 +80,15 @@ export class Order extends BaseEntity {
   static getOrderTotal(id: number) {
     return this.query(`
         SELECT
-        SUM('item'.'quantity'* 'product'.'price')
+        SUM("item"."quantity" * "product"."price")
         FROM
-        'order'
-        JOIN 'item'
-        ON 'order'.'id' = 'item'.'orderId'
-        JOIN 'product'
-        ON 'item'.'productId' = 'product'.'id'
+        "order"
+        JOIN "item"
+        ON "order"."id" = "item"."orderId"
+        JOIN "product"
+        ON "item"."productId" = "product"."id"
         WHERE
-        'order'.'id' = ${id}
+        "order"."id" = ${id}
       `)
   }
 }

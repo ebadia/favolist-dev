@@ -51,10 +51,16 @@ export class Item {
 
   // Relations
 
-  @ManyToOne(type => Product, product => product.items, { eager: true })
+  @ManyToOne(type => Product, product => product.items, {
+    eager: true,
+    onDelete: 'CASCADE'
+  })
   @JoinColumn()
   product: Product
 
-  @ManyToOne(type => Order, order => order.items)
+  @ManyToOne(type => Order, order => order.items, {
+    cascadeRemove: true,
+    onDelete: 'CASCADE'
+  })
   order: Order
 }

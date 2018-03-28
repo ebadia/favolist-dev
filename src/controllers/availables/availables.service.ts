@@ -68,7 +68,7 @@ export class AvailablesService {
     // return await Available.getAvailablesByShop( id, null )
     return await this.availablesRepo.query(`
 SELECT
-"available"."id",
+"available"."id" AS "availableId",
 "available"."day",
 "available"."stock",
 "available"."productId",

@@ -1,7 +1,7 @@
 import { Category } from './../../entities/Category.entity'
 import { Component } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
-import { Repository } from 'typeorm'
+import { Connection, Repository } from 'typeorm'
 import * as moment from 'moment'
 
 // import { Cat } from './interfaces/cat.interface';
@@ -15,7 +15,8 @@ import { Day } from '../../entities/Day.entity'
 export class ProductsService {
   constructor(
     @InjectRepository(Product)
-    private readonly productsRepo: Repository<Product>
+    private readonly productsRepo: Repository<Product>,
+    private _connection: Connection
   ) {}
 
   async findAll(): Promise<Product[]> {
@@ -24,11 +25,25 @@ export class ProductsService {
     })
   }
 
+  async findOne(id: number): Promise<Product> {
+    return await this.productsRepo.findOneById(id, {
+      select: ['id', 'name', 'price', 'description', 'image'],
+      relations: ['days']
+    })
+  }
+
   async findAllDays(): Promise<Product[]> {
     return await this.productsRepo.find({
       select: ['id', 'name', 'price', 'description', 'image'],
       relations: ['days']
     })
+  }
+
+  async getAllDays(): Promise<any[]> {
+    return await this._connection
+      .getRepository(Day)
+      .createQueryBuilder('days')
+      .getMany()
   }
 
   async findAllShops(): Promise<Product[]> {
@@ -68,6 +83,23 @@ export class ProductsService {
   async update(id: number, product?: Product): Promise<Product> {
     const aProduct = Object.assign(new Product(), product)
     await this.productsRepo.updateById(id, aProduct)
+    return await this.productsRepo.findOneById(id)
+  }
+
+  async updateDay(id: number, dayId: number, status: string): Promise<Product> {
+    if (status === 'true') {
+      await this.productsRepo
+        .createQueryBuilder()
+        .relation(Product, 'days')
+        .of(id)
+        .add(dayId)
+    } else {
+      await this.productsRepo
+        .createQueryBuilder()
+        .relation(Product, 'days')
+        .of(id)
+        .remove(dayId)
+    }
     return await this.productsRepo.findOneById(id)
   }
 

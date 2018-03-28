@@ -1,6 +1,16 @@
 import { Component } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
+import {
+  WebSocketGateway,
+  SubscribeMessage,
+  WsResponse,
+  WebSocketServer,
+  WsException
+} from '@nestjs/websockets'
+import { Observable } from 'rxjs/Observable'
+import 'rxjs/add/observable/from'
+import 'rxjs/add/operator/map'
 
 import { OrdersModule } from './orders.module'
 import { Order } from '../../entities/Order.entity'
@@ -15,7 +25,10 @@ import { Item } from '../../entities/Item.entity'
 import { CreateItemDto } from '../items/dto/create-item.dto'
 
 @Component()
+@WebSocketGateway()
 export class OrdersService {
+  @WebSocketServer() server
+
   constructor(
     @InjectRepository(Order) private readonly ordersRepo: Repository<Order>
   ) {}
@@ -26,17 +39,31 @@ export class OrdersService {
     })
   }
 
+  async findAllByStatus(status: string): Promise<Order[]> {
+    return await this.ordersRepo.find({
+      where: { status },
+      relations: ['user', 'shop', 'items', 'items.product']
+    })
+  }
+
   async find(id: number): Promise<Order> {
     const total = await Order.getOrderTotal(id)
     const order = await this.ordersRepo.findOneById(id, {
       relations: ['items', 'items.product']
     })
-    return Object.assign(order, { total: total[0].sum })
+
+    return Object.assign(order, {
+      total: total[0].sum
+    })
     // return await this.ordersRepo.findOneById( id, { relations: ['items', 'items.product']})
   }
 
   async create(order: CreateOrderDto): Promise<Order> {
     const anOrder = Object.assign(new Order(), order)
+    // send message to socket
+    this.server.emit('new order', { event: 'new order', data: anOrder })
+    //
+    //
     return await this.ordersRepo.save(anOrder)
   }
 
@@ -52,37 +79,53 @@ export class OrdersService {
 
   async findFromShop(id: number, date: string): Promise<Order[]> {
     //
-    return await this.ordersRepo
+    const finded = await this.ordersRepo
       .createQueryBuilder('order')
       .leftJoinAndSelect('order.user', 'user')
       .leftJoinAndSelect('order.items', 'items')
       .leftJoinAndSelect('items.product', 'product')
-      .where('order.shop.id=:id', { id })
-      .andWhere('order.day=:date', { date })
+      .where('order.shop.id=:id', {
+        id
+      })
+      .andWhere('order.day=:date', {
+        date
+      })
       .getMany()
 
-    /*
-    return await this.ordersRepo.query(`
-        SELECT
-          'order'.'day',
-          'order'.'hour',
-          'order'.'status',
-          'order'.'shopId',
-          'order'.'userId',
-          'user'.'first_name',
-          'user'.'last_name',
-          'shop'.'name'
-        FROM
-          'order'
-        JOIN 'shop'
-          ON 'order'.'shopId' = 'shop'.'id'
-        JOIN 'user'
-          ON 'order'.'userId' = 'user'.'id'
-        WHERE 'shop'.'id' = ${id}
-        AND 'order'.'day' = '${date}'
-        ;
-        `)
-        */
+    // send message to socket
+    this.server.emit('today orders', { event: 'today orders', data: true })
+    //
+
+    return finded
+  }
+
+  async findFromShopStatus(
+    id: number,
+    date: string,
+    status: string
+  ): Promise<Order[]> {
+    //
+    const finded = await this.ordersRepo
+      .createQueryBuilder('order')
+      .leftJoinAndSelect('order.user', 'user')
+      .leftJoinAndSelect('order.items', 'items')
+      .leftJoinAndSelect('items.product', 'product')
+      .where('order.shop.id=:id', {
+        id
+      })
+      .andWhere('order.day=:date', {
+        date
+      })
+      .andWhere('order.status=:status', {
+        status
+      })
+      .getMany()
+
+    // send message to socket
+    this.server.emit('today orders', { event: 'today orders', data: true })
+    //
+
+    return finded
   }
 
   async addItemToOrder(id: number, item: Item): Promise<Order> {
@@ -122,5 +165,19 @@ export class OrdersService {
       .andWhere('order.shop.id=:shopId', { shopId })
       .andWhere('order.day=:date', { date })
       .getMany()
+  }
+
+  // **************************
+  // Socket Message Subscribers
+  // **************************
+  @SubscribeMessage('new order')
+  onCreateOrder(client, data): WsResponse<any> {
+    const event = 'new order'
+    return { event, data: true }
+  }
+  @SubscribeMessage('today orders')
+  onTodayOrders(client, data): WsResponse<any> {
+    const event = 'new order'
+    return { event, data: true }
   }
 }

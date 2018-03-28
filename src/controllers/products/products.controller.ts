@@ -28,6 +28,11 @@ export class ProductsController {
     return await this.productsService.findAll()
   }
 
+  @Get('edit/:id')
+  async findOne(@Param('id') id: number): Promise<Product> {
+    return await this.productsService.findOne(id)
+  }
+
   @Get('shops')
   async findAllShops(): Promise<Product[]> {
     return await this.productsService.findAllShops()
@@ -36,6 +41,11 @@ export class ProductsController {
   @Get('days')
   async findAllDays(): Promise<Product[]> {
     return await this.productsService.findAllDays()
+  }
+
+  @Get('all/days')
+  async getAllDays(): Promise<Product[]> {
+    return await this.productsService.getAllDays()
   }
 
   @Post()
@@ -70,6 +80,20 @@ export class ProductsController {
   ) {
     try {
       return await this.productsService.update(id, product)
+    } catch (error) {
+      throw new BadRequestException(error)
+    }
+  }
+
+  @Get(':id/days/:dayId/status/:status')
+  async updateDay(
+    @Param('id', new ParseIntPipe())
+    id,
+    @Param('dayId') dayId: number,
+    @Param('status') status: string
+  ) {
+    try {
+      return await this.productsService.updateDay(id, dayId, status)
     } catch (error) {
       throw new BadRequestException(error)
     }

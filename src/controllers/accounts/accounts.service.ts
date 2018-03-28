@@ -55,7 +55,7 @@ export class AccountsService {
   private createToken(
     user: User
   ): { expires_in: number; access_token: string } {
-    const expiresIn = 60 * 60
+    const expiresIn = 60 * 60 * 10
     const secretOrKey = token_secret
 
     const token = jwt.sign(Object.assign({}, user), secretOrKey, { expiresIn })
