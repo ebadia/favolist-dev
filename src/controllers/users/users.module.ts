@@ -2,16 +2,17 @@ import {
   Module,
   NestModule,
   MiddlewaresConsumer,
-  RequestMethod,
-} from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import * as passport from 'passport';
+  RequestMethod
+} from '@nestjs/common'
+import { TypeOrmModule } from '@nestjs/typeorm'
+import * as passport from 'passport'
+import { CorsMiddleware } from '@nest-middlewares/cors'
 
 import { LoggerMiddleware } from '../../common/middlewares/logger.middleware'
 import { RequestTime } from '../../common/middlewares/requestTime.middleware'
 
-import { UsersController } from './users.controller';
-import { UsersService } from './users.service';
+import { UsersController } from './users.controller'
+import { UsersService } from './users.service'
 import { User } from '../../entities/User.entity'
 
 @Module({
@@ -21,8 +22,7 @@ import { User } from '../../entities/User.entity'
   exports: [UsersService]
 })
 export class UsersModule implements NestModule {
-
-  public configure( consumer: MiddlewaresConsumer ) {
+  public configure(consumer: MiddlewaresConsumer) {
     consumer
       .apply(passport.authenticate('jwt', { session: false }))
       .forRoutes(UsersController)
@@ -34,5 +34,4 @@ export class UsersModule implements NestModule {
       .apply(RequestTime)
       .forRoutes(UsersController)
   }
-
 }

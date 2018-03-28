@@ -6,6 +6,7 @@ import {
 } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import * as passport from 'passport'
+import { CorsMiddleware } from '@nest-middlewares/cors'
 
 import { LoggerMiddleware } from '../../common/middlewares/logger.middleware'
 
@@ -26,6 +27,8 @@ export class ProductsModule implements NestModule {
 
       .apply(LoggerMiddleware)
       .with('Product')
+      .forRoutes(ProductsController)
+      .apply(CorsMiddleware)
       .forRoutes(ProductsController)
   }
 }

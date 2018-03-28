@@ -2,27 +2,27 @@ import {
   Module,
   NestModule,
   MiddlewaresConsumer,
-  RequestMethod,
-} from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import * as passport from 'passport';
+  RequestMethod
+} from '@nestjs/common'
+import { TypeOrmModule } from '@nestjs/typeorm'
+import * as passport from 'passport'
+import { CorsMiddleware } from '@nest-middlewares/cors'
 
 import { LoggerMiddleware } from '../../common/middlewares/logger.middleware'
 import { RequestTime } from '../../common/middlewares/requestTime.middleware'
 
-import { ShopsController } from './shops.controller';
-import { ShopsService } from './shops.service';
+import { ShopsController } from './shops.controller'
+import { ShopsService } from './shops.service'
 import { Shop } from '../../entities/Shop.entity'
 
 @Module({
   controllers: [ShopsController],
   components: [ShopsService],
   exports: [ShopsService],
-  imports: [TypeOrmModule.forFeature([Shop])],
+  imports: [TypeOrmModule.forFeature([Shop])]
 })
 export class ShopsModule implements NestModule {
-
-  public configure( consumer: MiddlewaresConsumer ) {
+  public configure(consumer: MiddlewaresConsumer) {
     consumer
       .apply(passport.authenticate('jwt', { session: false }))
       .forRoutes(ShopsController)
@@ -33,6 +33,7 @@ export class ShopsModule implements NestModule {
 
       .apply(RequestTime)
       .forRoutes(ShopsController)
+      .apply(CorsMiddleware)
+      .forRoutes(ShopsController)
   }
-
 }

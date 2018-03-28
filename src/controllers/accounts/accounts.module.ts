@@ -7,6 +7,7 @@ import {
 import { TypeOrmModule } from '@nestjs/typeorm'
 import * as passport from 'passport'
 import { SFJwtStrategy } from './passport/jwt.strategy'
+import { CorsMiddleware } from '@nest-middlewares/cors'
 
 import { AccountsController } from './accounts.controller'
 import { AccountsService } from './accounts.service'
@@ -22,5 +23,7 @@ export class AccountsModule implements NestModule {
     consumer
       .apply(passport.authenticate('jwt', { session: false }))
       .forRoutes({ path: '/accounts/authorized', method: RequestMethod.GET })
+      .apply(CorsMiddleware)
+      .forRoutes(AccountsController)
   }
 }
