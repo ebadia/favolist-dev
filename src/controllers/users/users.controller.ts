@@ -104,7 +104,7 @@ export class UsersController {
     }
   }
 
-  @Patch(':id/roles')
+  @Post(':id/roles')
   @UsePipes(new ValidationPipe())
   async addRole(
     @Param('id', new ParseIntPipe())
