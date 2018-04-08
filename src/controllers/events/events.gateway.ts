@@ -21,4 +21,13 @@ export class EventsGateway {
     // emit message to everybody
     this.server.emit('order ready', { event: 'order ready', data: true })
   }
+
+  @SubscribeMessage('echo')
+  onEventEcho(client, data) {
+    const event = 'echo'
+    const response = true
+
+    // emit message to everybody
+    this.server.emit('echo', { event: 'echo', data: 'Hello from websocket' })
+  }
 }
