@@ -73,11 +73,14 @@ export class UsersService {
   }
 
   async delete(id: number): Promise<void> {
-    await this.usersRepo
-      .createQueryBuilder()
-      .delete()
-      .where('id=:id', { id })
-      .execute()
+    const user = await this.usersRepo.findOneById(id)
+    await this.usersRepo.remove(user)
+
+    // await this.usersRepo
+    //   .createQueryBuilder()
+    //   .delete()
+    //   .where('id=:id', { id })
+    //   .execute()
   }
 
   async findWithShops(): Promise<User[]> {
