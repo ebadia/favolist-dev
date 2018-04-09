@@ -63,10 +63,7 @@ export class Order extends BaseEntity {
 
   // Relations
 
-  @OneToMany(type => Item, items => items.order, {
-    cascadeInsert: true,
-    cascadeUpdate: true
-  })
+  @OneToMany(type => Item, items => items.order)
   items: Item[]
 
   @ManyToOne(type => Shop, shop => shop.orders)
