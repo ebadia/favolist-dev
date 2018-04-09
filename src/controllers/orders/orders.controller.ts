@@ -52,7 +52,7 @@ export class OrdersController {
     @Param('status') status
   ): Promise<Order[]> {
     // const date = new Date(Date.now()).toISOString().split('T')[0]
-    const date = moment().format('YYYY-MM-DD')
+    const date = moment().local().format('YYYY-MM-DD')
 
     return await this.ordersService.findFromShopStatus(id, date, status)
   }
@@ -133,7 +133,7 @@ export class OrdersController {
     id
   ): Promise<Order[]> {
     // const date = new Date(Date.now()).toISOString().split('T')[0]
-    const date = moment().format('YYYY-MM-DD')
+    const date = moment().local().format('YYYY-MM-DD')
     return await this.ordersService.findFromShop(id, date)
   }
 
@@ -143,7 +143,7 @@ export class OrdersController {
     id
   ): Promise<Order[]> {
     // const date = new Date(Date.now()).toISOString().split('T')[0]
-    const date = moment().format('YYYY-MM-DD')
+    const date = moment().local().format('YYYY-MM-DD')
     return await this.ordersService.findFromUser(id, date)
   }
 
@@ -155,7 +155,7 @@ export class OrdersController {
     shopId
   ): Promise<Order[]> {
     // const date = new Date(Date.now()).toISOString().split('T')[0]
-    const date = moment().format('YYYY-MM-DD')
+    const date = moment().local().format('YYYY-MM-DD')
     return await this.ordersService.findFromUserShop(userId, shopId, date)
   }
 
