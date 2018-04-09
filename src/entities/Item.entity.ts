@@ -59,7 +59,6 @@ export class Item {
   product: Product
 
   @ManyToOne(type => Order, order => order.items, {
-    cascadeRemove: true,
     onDelete: 'CASCADE'
   })
   order: Order
