@@ -9,7 +9,6 @@ import { TypeOrmModule } from '@nestjs/typeorm'
 import { Connection } from 'typeorm'
 import { CorsMiddleware } from '@nest-middlewares/cors'
 import { CorsMyMiddleware } from './common/middlewares/cors.middleware'
-
 import { AppController } from './app.controller'
 import { AccountsModule } from './controllers/accounts/accounts.module'
 import { UsersModule } from './controllers/users/users.module'
@@ -23,6 +22,9 @@ import { EventsModule } from './controllers/events/events.module'
 import { LoggerMiddleware } from './common/middlewares/logger.middleware'
 import { RequestTime } from './common/middlewares/requestTime.middleware'
 
+import { MailerModule } from '@yops/nest-mailer'
+import * as sendinBlue from 'nodemailer-sendinblue-transport'
+
 @Module({
   imports: [
     UsersModule,
@@ -33,7 +35,16 @@ import { RequestTime } from './common/middlewares/requestTime.middleware'
     OrdersModule,
     ItemsModule,
     EventsModule,
-    TypeOrmModule.forRoot()
+    TypeOrmModule.forRoot(),
+    MailerModule.forRoot({
+      transport: sendinBlue({
+        apiKey: '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'
+      }),
+      defaults:{
+        from: '"favolist-mailer" <noreply@favolist.com>'
+      },
+      templateDir: './src/common/email'
+    })
   ],
   controllers: [AppController],
   components: [],

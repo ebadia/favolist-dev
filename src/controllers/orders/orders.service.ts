@@ -74,7 +74,9 @@ export class OrdersService {
   }
 
   async delete(id: number) {
-    await this.ordersRepo.removeById(id)
+    // await this.ordersRepo.removeById(id)
+    const user = await this.ordersRepo.findOneById(id)
+    await this.ordersRepo.remove(user)
   }
 
   async findFromShop(id: number, date: string): Promise<Order[]> {
