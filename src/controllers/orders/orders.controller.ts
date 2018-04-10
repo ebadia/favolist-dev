@@ -14,6 +14,7 @@ import { UsePipes } from '@nestjs/common'
 import { ValidationPipe } from '../../common/pipes/validation.pipe'
 import { ParseIntPipe } from '../../common/pipes/parse-int.pipe'
 import * as moment from 'moment'
+import * as mt from 'moment-timezone'
 
 import { OrdersService } from './orders.service'
 import { Order } from '../../entities/Order.entity'
@@ -51,8 +52,8 @@ export class OrdersController {
     id,
     @Param('status') status
   ): Promise<Order[]> {
-    // const date = new Date(Date.now()).toISOString().split('T')[0]
-    const date = moment().local().format('YYYY-MM-DD')
+    // const date = moment().local().format('YYYY-MM-DD')
+    const date = mt().tz('Europe/Madrid').format('YYYY-MM-DD')
 
     return await this.ordersService.findFromShopStatus(id, date, status)
   }
@@ -132,8 +133,8 @@ export class OrdersController {
     @Param('id', new ParseIntPipe())
     id
   ): Promise<Order[]> {
-    // const date = new Date(Date.now()).toISOString().split('T')[0]
-    const date = moment().local().format('YYYY-MM-DD')
+    // const date = moment().local().format('YYYY-MM-DD')
+    const date = mt().tz('Europe/Madrid').format('YYYY-MM-DD')
     return await this.ordersService.findFromShop(id, date)
   }
 
@@ -142,8 +143,8 @@ export class OrdersController {
     @Param('id', new ParseIntPipe())
     id
   ): Promise<Order[]> {
-    // const date = new Date(Date.now()).toISOString().split('T')[0]
-    const date = moment().local().format('YYYY-MM-DD')
+    // const date = moment().local().format('YYYY-MM-DD')
+    const date = mt().tz('Europe/Madrid').format('YYYY-MM-DD')
     return await this.ordersService.findFromUser(id, date)
   }
 
@@ -154,8 +155,8 @@ export class OrdersController {
     @Param('shopId', new ParseIntPipe())
     shopId
   ): Promise<Order[]> {
-    // const date = new Date(Date.now()).toISOString().split('T')[0]
-    const date = moment().local().format('YYYY-MM-DD')
+    // const date = moment().local().format('YYYY-MM-DD')
+    const date = mt().tz('Europe/Madrid').format('YYYY-MM-DD')
     return await this.ordersService.findFromUserShop(userId, shopId, date)
   }
 
