@@ -25,6 +25,7 @@ import { RequestTime } from './common/middlewares/requestTime.middleware'
 
 import { MailerModule } from '@nest-modules/mailer'
 import * as sendinBlue from 'nodemailer-sendinblue-transport'
+import { DaysModule } from './controllers/days/days.module'
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import * as sendinBlue from 'nodemailer-sendinblue-transport'
     ItemsModule,
     EventsModule,
     MailsModule,
+    DaysModule,
     TypeOrmModule.forRoot(),
     MailerModule.forRoot({
       transport: {

@@ -77,8 +77,7 @@ export class Product {
   @JoinTable()
   categories: Category[]
 
-  @ManyToMany(type => Day, day => day.products)
-  @JoinTable()
+  @OneToMany(type => Day, day => day.product)
   days: Day[]
 
   @OneToMany(type => Item, items => items.product)

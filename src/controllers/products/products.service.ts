@@ -1,22 +1,18 @@
-import { Category } from './../../entities/Category.entity'
 import { Component } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
-import { Connection, Repository } from 'typeorm'
+import { Connection, Repository, getRepository } from 'typeorm'
 import * as moment from 'moment'
-
-// import { Cat } from './interfaces/cat.interface';
-import { ProductsModule } from './products.module'
 import { Product } from '../../entities/Product.entity'
 import { CreateProductDto } from './dto/create-product.dto'
-import { CreateProductOrderDto } from './dto/create-product-order.dto'
 import { Day } from '../../entities/Day.entity'
+import { Category } from './../../entities/Category.entity'
 
 @Component()
 export class ProductsService {
   constructor(
     @InjectRepository(Product)
     private readonly productsRepo: Repository<Product>,
-    private _connection: Connection
+    private _connection: Connection,
   ) {}
 
   async findAll(): Promise<Product[]> {
@@ -59,13 +55,36 @@ export class ProductsService {
   }
 
   async addDays(id: number, day: any): Promise<Product> {
-    const product = await this.productsRepo.findOneById(id, {
-      relations: ['days']
-    })
-    const aDay = Object.assign(new Day(), day)
-    product.days.push(aDay)
-    await this.productsRepo.save(product)
-    return await this.productsRepo.findOneById(id, { relations: ['days'] })
+    const dayRepo = getRepository(Day)
+    // const haveDay = await dayRepo.find( { where: { code: day.code, 'productId': id } } )
+    const haveDay = await this.productsRepo
+      .createQueryBuilder("product")
+      .leftJoinAndSelect("product.days", "days")
+      .where("product.id = :id", {id})
+      .andWhere("days.code = :code", { code: day.code})
+      .getOne()
+
+    console.log('HAVE DAY', haveDay)
+
+    if (haveDay) {
+      // update
+      const theDay = await dayRepo.findOneById(haveDay.days[0].id)
+      theDay.stock = day.stock
+      theDay.stockOut = day.stockOut
+      await dayRepo.save(theDay)
+      return await this.productsRepo.findOneById(id, { relations: ['days'] })
+    } else {
+      // create
+      const aDay = Object.assign(new Day(), day)
+      aDay.product =  await this.productsRepo.findOneById(id)
+      const saveDay = await dayRepo.save(aDay)
+      await this.productsRepo
+        .createQueryBuilder()
+        .relation(Product,'days')
+        .of(id)
+        .add(saveDay)
+      return await this.productsRepo.findOneById(id, { relations: ['days'] })
+    }
   }
 
   async addCategories(id: number, category: any): Promise<Product> {

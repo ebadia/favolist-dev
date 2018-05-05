@@ -58,6 +58,6 @@ export class Day {
 
   // Relations
 
-  @ManyToMany(type => Product, product => product.days)
-  products: Product[]
+  @ManyToOne(type => Product, product => product.days)
+  product: Product[]
 }

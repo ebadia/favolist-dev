@@ -63,7 +63,8 @@ export class ItemsService {
   }
 
   async delete(id: number) {
-    await this.itemsRepo.removeById(id)
+    const item = await this.itemsRepo.findOneById(id)
+    await this.itemsRepo.remove(item)
   }
 
   // **************************
