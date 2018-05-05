@@ -23,7 +23,7 @@ export class ProductsService {
 
   async findOne(id: number): Promise<Product> {
     return await this.productsRepo.findOneById(id, {
-      select: ['id', 'name', 'price', 'description', 'image'],
+      select: ['id', 'name', 'price', 'description', 'image', 'stock', 'stockOut'],
       relations: ['days']
     })
   }

@@ -65,6 +65,18 @@ export class Product {
   @IsUrl()
   image: string
 
+  @Column('integer', {
+    nullable: false,
+    default: 0
+  })
+  stock: number
+
+  @Column('integer', {
+    nullable: false,
+    default: 0
+  })
+  stockOut: number
+
   // Relations
 
   @ManyToOne(type => Shop, shop => shop.products)
