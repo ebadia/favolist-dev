@@ -51,29 +51,27 @@ export class Available extends BaseEntity {
   })
   stock: string
 
+  @Column('real', {
+    nullable: true
+  })
+  price: string
+
+  @Column('smallint', {
+    nullable: true
+  })
+  stockOut: string
+
   // Relations
 
   @ManyToOne(type => Product, product => product.avaliables)
   product: Product
-
-  /*
-  SELECT available.id,
-    available.day,
-    available.stock,
-    available.'productId',
-    product.name AS product,
-    shop.name AS shop,
-    shop.id AS shopid
-   FROM available
-     LEFT JOIN product ON available.'productId' = product.id
-     LEFT JOIN shop ON product.'shopId' = shop.id
-  */
 
   static getAvailablesByShop(shopId: number, date: string) {
     return this.query(`
       SELECT available.id,
         available.day,
         available.stock,
+        available.stockOut,
         available.'productId',
         product.name AS product,
         shop.name AS shop,

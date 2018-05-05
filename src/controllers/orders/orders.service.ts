@@ -1,4 +1,4 @@
-import { Component } from '@nestjs/common'
+import { Component, Inject } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
 import {
@@ -30,7 +30,7 @@ export class OrdersService {
   @WebSocketServer() server
 
   constructor(
-    @InjectRepository(Order) private readonly ordersRepo: Repository<Order>
+    @InjectRepository(Order) private readonly ordersRepo: Repository<Order>,
   ) {}
 
   async findAll(): Promise<Order[]> {
@@ -47,6 +47,7 @@ export class OrdersService {
   }
 
   async find(id: number): Promise<Order> {
+    console.log('GET CONTROLLER')
     const total = await Order.getOrderTotal(id)
     const order = await this.ordersRepo.findOneById(id, {
       relations: ['items', 'items.product']

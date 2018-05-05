@@ -67,23 +67,25 @@ export class AvailablesService {
   async findFromShop(id: number, date: string): Promise<Available> {
     // return await Available.getAvailablesByShop( id, null )
     return await this.availablesRepo.query(`
-SELECT
-"available"."id" AS "availableId",
-"available"."day",
-"available"."stock",
-"available"."productId",
-"product".*,
-"shop"."name" AS "shop",
-"shop"."id" AS "shopid"
-FROM
-"available"
-LEFT JOIN "product"
-ON "available"."productId" = "product"."id"
-LEFT JOIN "shop"
-ON "product"."shopId" = "shop"."id"
-WHERE
-"shop"."id" = ${id}
-AND "available"."day" = '${date}'
+          SELECT
+          "available"."id" AS "availableId",
+          "available"."price" AS "availablePrice",
+          "available"."day",
+          "available"."stock",
+          "available"."stockOut",
+          "available"."productId",
+          "product".*,
+          "shop"."name" AS "shop",
+          "shop"."id" AS "shopid"
+          FROM
+          "available"
+          LEFT JOIN "product"
+          ON "available"."productId" = "product"."id"
+          LEFT JOIN "shop"
+          ON "product"."shopId" = "shop"."id"
+          WHERE
+          "shop"."id" = ${id}
+          AND "available"."day" = '${date}'
         ;
         `)
   }

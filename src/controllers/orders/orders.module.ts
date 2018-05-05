@@ -37,6 +37,7 @@ export class OrdersModule implements NestModule {
       .apply(LoggerMiddleware)
       .with('Orders')
       .forRoutes(OrdersController)
+
       .apply(CorsMiddleware)
       .forRoutes(OrdersController)
   }

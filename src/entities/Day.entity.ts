@@ -38,6 +38,18 @@ export class Day {
   })
   code: DayOfWeek
 
+  @Column('integer', {
+    nullable: false,
+    default: 0
+  })
+  stock: number
+
+  @Column('integer', {
+    nullable: false,
+    default: 0
+  })
+  stockOut: number
+
   @Column('character varying', {
     nullable: false,
     length: 255

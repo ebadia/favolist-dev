@@ -168,4 +168,5 @@ export class OrdersController {
   ): Promise<Order[]> {
     return await this.ordersService.findFromShop(id, date)
   }
+
 }

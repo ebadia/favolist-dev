@@ -22,10 +22,14 @@ import { CreateShopDto } from '../shops/dto/create-shop.dto'
 import { UsersService } from './users.service'
 import { User } from '../../entities/User.entity'
 import { Shop } from '../../entities/Shop.entity'
+import { MailsService } from '../mails/mails.service'
 
 @Controller('users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(
+    private readonly usersService: UsersService,
+    private readonly mailService: MailsService,
+    ) {}
 
   @Get()
   async findAll(): Promise<User[]> {
@@ -84,7 +88,9 @@ export class UsersController {
   async create(@Body() user: CreateUserDto) {
     // throw new ForbiddenException()
     try {
-      return await this.usersService.create(user)
+      const newUser = await this.usersService.create(user)
+      await this.mailService.welcome(user)
+      return newUser
     } catch (error) {
       throw new BadRequestException(error)
     }

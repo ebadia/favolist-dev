@@ -14,11 +14,12 @@ import { RequestTime } from '../../common/middlewares/requestTime.middleware'
 import { UsersController } from './users.controller'
 import { UsersService } from './users.service'
 import { User } from '../../entities/User.entity'
+import { MailsModule } from '../mails/mails.module'
 
 @Module({
   controllers: [UsersController],
   components: [UsersService],
-  imports: [TypeOrmModule.forFeature([User])],
+  imports: [TypeOrmModule.forFeature([User]), MailsModule],
   exports: [UsersService]
 })
 export class UsersModule implements NestModule {

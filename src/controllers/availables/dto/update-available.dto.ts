@@ -6,5 +6,6 @@ export class UpdateAvailableDto {
   @IsOptional() @IsInt() readonly id: number
   @IsOptional() @IsString() readonly day: string
   @IsOptional() @IsNumber() readonly stock: number
+  @IsOptional() @IsNumber() readonly price: number
   @IsOptional() @IsNotEmpty() readonly product: AssignProductDto
 }
