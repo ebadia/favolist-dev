@@ -160,6 +160,18 @@ export class OrdersController {
     return await this.ordersService.findFromUserShop(userId, shopId, date)
   }
 
+  @Get('/fromtoday/users/:userId/shops/:shopId')
+  async findFromTodayFromUserShop(
+    @Param('userId', new ParseIntPipe())
+    userId,
+    @Param('shopId', new ParseIntPipe())
+    shopId
+  ): Promise<Order[]> {
+    // const date = moment().local().format('YYYY-MM-DD')
+    const date = mt().tz('Europe/Madrid').format('YYYY-MM-DD')
+    return await this.ordersService.findFromFromUserShop(userId, shopId, date)
+  }
+
   @Get('/date/shops/:id')
   async findDateFromShop(
     @Param('id', new ParseIntPipe())

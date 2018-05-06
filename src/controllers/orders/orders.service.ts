@@ -170,6 +170,24 @@ export class OrdersService {
       .getMany()
   }
 
+  async findFromFromUserShop(
+    userId: number,
+    shopId: number,
+    date: string
+  ): Promise<Order[]> {
+    //
+    return await this.ordersRepo
+      .createQueryBuilder('order')
+      .leftJoinAndSelect('order.shop', 'shop')
+      .leftJoinAndSelect('order.user', 'user')
+      .leftJoinAndSelect('order.items', 'items')
+      .leftJoinAndSelect('items.product', 'product')
+      .where('order.user.id=:userId', { userId })
+      .andWhere('order.shop.id=:shopId', { shopId })
+      .andWhere('order.day>=:date', { date })
+      .getMany()
+  }
+
   // **************************
   // Socket Message Subscribers
   // **************************

@@ -6,6 +6,12 @@ export enum status {
   READY = 'READY'
 }
 
+export enum place {
+  TEL = 'TEL',
+  APP = 'APP',
+  SHOP = 'SHOP'
+}
+
 export enum roles {
   ADMIN = 'ADMIN',
   BUYER = 'BUYER',

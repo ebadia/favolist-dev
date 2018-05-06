@@ -49,6 +49,12 @@ export class Item {
   })
   status: string
 
+  @Column('character varying', {
+    nullable: true,
+    length: 100
+  })
+  place: string
+
   // Relations
 
   @ManyToOne(type => Product, product => product.items, {
