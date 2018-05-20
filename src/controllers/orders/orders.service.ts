@@ -189,9 +189,9 @@ export class OrdersService {
       .getMany()
   }
 
-  async dashboard(date: string): Promise<any> {
+  async dashboard(date: string, id: number): Promise<any> {
     return await this._conection.query(
-      `SELECT * from dashboard WHERE day = '${date}'`
+      `SELECT * from dashboard WHERE day = '${date}' AND shopid = ${id}`
     )
   }
 

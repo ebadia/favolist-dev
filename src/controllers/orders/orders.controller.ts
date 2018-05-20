@@ -191,8 +191,11 @@ export class OrdersController {
     return await this.ordersService.findFromShop(id, date)
   }
 
-  @Get('/dashboard/:date')
-  async getDashboardFromDate(@Param('date') date): Promise<any> {
-    return await this.ordersService.dashboard(date)
+  @Get('/dashboard/:date/shop/:id')
+  async getDashboardFromDate(
+    @Param('date') date,
+    @Param('id') id
+  ): Promise<any> {
+    return await this.ordersService.dashboard(date, id)
   }
 }
