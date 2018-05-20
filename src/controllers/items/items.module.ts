@@ -1,7 +1,7 @@
 import {
   Module,
   NestModule,
-  MiddlewaresConsumer,
+  MiddlewareConsumer,
   RequestMethod
 } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
@@ -15,13 +15,13 @@ import { ItemsService } from './items.service'
 import { Item } from '../../entities/Item.entity'
 
 @Module({
-  components: [ItemsService],
+  providers: [ItemsService],
   controllers: [ItemsController],
   imports: [TypeOrmModule.forFeature([Item])],
   exports: [ItemsService]
 })
 export class ItemsModule implements NestModule {
-  public configure(consumer: MiddlewaresConsumer) {
+  public configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(passport.authenticate('jwt', { session: false }))
       .forRoutes(ItemsController)

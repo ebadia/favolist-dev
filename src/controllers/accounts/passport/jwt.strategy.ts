@@ -1,11 +1,11 @@
 import * as passport from 'passport'
 import { ExtractJwt, Strategy } from 'passport-jwt'
-import { Component, Inject } from '@nestjs/common'
+import { Injectable, Inject } from '@nestjs/common'
 import { AccountsService } from '../accounts.service'
 
 const token_secret = process.env.TOKEN_SECRET || 'sfoodt'
 
-@Component()
+@Injectable()
 export class SFJwtStrategy extends Strategy {
   constructor(private readonly authService: AccountsService) {
     super(

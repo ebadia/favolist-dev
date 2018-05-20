@@ -1,4 +1,4 @@
-import { Component, NotFoundException } from '@nestjs/common'
+import { Injectable, NotFoundException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
 import * as jwt from 'jsonwebtoken'
@@ -11,7 +11,7 @@ import { CreateUserDto } from '../users/dto/create-user.dto'
 
 const token_secret = process.env.TOKEN_SECRET || 'sfoodt'
 
-@Component()
+@Injectable()
 export class AccountsService {
   constructor(
     @InjectRepository(User) private readonly accountsRepo: Repository<User>
@@ -59,7 +59,7 @@ export class AccountsService {
     const secretOrKey = token_secret
 
     const token = jwt.sign(Object.assign({}, user), secretOrKey, { expiresIn })
-    console.log(token)
+    // console.log(token)
 
     return {
       expires_in: expiresIn,

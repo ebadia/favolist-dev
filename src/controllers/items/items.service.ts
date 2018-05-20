@@ -1,4 +1,4 @@
-import { Component } from '@nestjs/common'
+import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
 import {
@@ -18,7 +18,7 @@ import { Shop } from '../../entities/Shop.entity'
 import { UpdateUserDto } from '../users/dto/update-user.dto'
 import { UpdateShopDto } from '../shops/dto/update-shop.dto'
 
-@Component()
+@Injectable()
 @WebSocketGateway()
 export class ItemsService {
   @WebSocketServer() server
@@ -36,7 +36,7 @@ export class ItemsService {
   }
 
   async find(id: number): Promise<Item> {
-    // return await this.itemsRepo.findOneById( id, {relations: ["product"]} )
+    // return await this.itemsRepo.findOne( id, {relations: ["product"]} )
     return await this.itemsRepo
       .createQueryBuilder('item')
       .leftJoinAndSelect('item.product', 'product')
@@ -51,8 +51,8 @@ export class ItemsService {
 
   async update(id: number, item: UpdateItemDto): Promise<Item> {
     const anItem = Object.assign(new Item(), item)
-    await this.itemsRepo.updateById(id, anItem)
-    const upatedItem = await this.itemsRepo.findOneById(id)
+    await this.itemsRepo.update(id, anItem)
+    const upatedItem = await this.itemsRepo.findOne(id)
     // send message to socket
     this.server.emit('item updated', {
       event: 'item updated',
@@ -63,7 +63,7 @@ export class ItemsService {
   }
 
   async delete(id: number) {
-    const item = await this.itemsRepo.findOneById(id)
+    const item = await this.itemsRepo.findOne(id)
     await this.itemsRepo.remove(item)
   }
 

@@ -1,4 +1,4 @@
-import { Component } from '@nestjs/common'
+import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
 
@@ -12,7 +12,7 @@ import { CreateAvailableDto } from './dto/create-available.dto'
 import { UpdateAvailableDto } from './dto/update-available.dto'
 import { AssignProductDto } from '../products/dto/assign-product.dto'
 
-@Component()
+@Injectable()
 export class AvailablesService {
   constructor(
     @InjectRepository(Available)
@@ -25,12 +25,12 @@ export class AvailablesService {
 
   async findOne(id: number): Promise<Available> {
     // I can do this because I have added option { select: false } in @Column for password
-    return await this.availablesRepo.findOneById(id, { relations: ['product'] })
+    return await this.availablesRepo.findOne(id, { relations: ['product'] })
   }
 
   async findOneWithProduct(id: number): Promise<Available> {
     // I can do this because I have added option { select: false } in @Column for password
-    return await this.availablesRepo.findOneById(id, { relations: ['product'] })
+    return await this.availablesRepo.findOne(id, { relations: ['product'] })
   }
 
   async create(product: CreateAvailableDto): Promise<Available> {
@@ -52,8 +52,8 @@ export class AvailablesService {
 
   async update(id: number, product?: UpdateAvailableDto): Promise<Available> {
     const aProduct = Object.assign(new Available(), product)
-    await this.availablesRepo.updateById(id, aProduct)
-    return await this.availablesRepo.findOneById(id)
+    await this.availablesRepo.update(id, aProduct)
+    return await this.availablesRepo.findOne(id)
   }
 
   async delete(id: number): Promise<void> {

@@ -1,6 +1,6 @@
-import { Middleware, NestMiddleware, ExpressMiddleware } from '@nestjs/common'
+import { Injectable, NestMiddleware, ExpressMiddleware } from '@nestjs/common'
 
-@Middleware()
+@Injectable()
 export class RequestTime implements NestMiddleware {
   resolve(): ExpressMiddleware {
     return (req, res, next) => {

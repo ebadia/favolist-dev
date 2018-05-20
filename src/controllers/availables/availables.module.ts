@@ -1,7 +1,7 @@
 import {
   Module,
   NestModule,
-  MiddlewaresConsumer,
+  MiddlewareConsumer,
   RequestMethod
 } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
@@ -16,11 +16,11 @@ import { Available } from '../../entities/Available.entity'
 
 @Module({
   controllers: [AvailablesController],
-  components: [AvailablesService],
+  providers: [AvailablesService],
   imports: [TypeOrmModule.forFeature([Available])]
 })
 export class AvailablesModule implements NestModule {
-  public configure(consumer: MiddlewaresConsumer) {
+  public configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(passport.authenticate('jwt', { session: false }))
       .forRoutes(AvailablesController)

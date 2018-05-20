@@ -1,4 +1,4 @@
-import { Component } from '@nestjs/common'
+import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
 import {
@@ -12,15 +12,12 @@ import { Day } from '../../entities/Day.entity'
 import { CreateDayDto } from './dto/create-day.dto'
 import { UpdateDayDto } from './dto/update-day.dto'
 
-
-@Component()
+@Injectable()
 @WebSocketGateway()
 export class DaysService {
   @WebSocketServer() server
 
-  constructor(
-    @InjectRepository(Day) private readonly repo: Repository<Day>
-  ) {}
+  constructor(@InjectRepository(Day) private readonly repo: Repository<Day>) {}
 
   async findAll(): Promise<Day[]> {
     return await this.repo
@@ -30,7 +27,7 @@ export class DaysService {
   }
 
   async find(id: number): Promise<Day> {
-    // return await this.repo.findOneById( id, {relations: ["product"]} )
+    // return await this.repo.findOne( id, {relations: ["product"]} )
     return await this.repo
       .createQueryBuilder('day')
       .leftJoinAndSelect('day.product', 'product')
@@ -45,14 +42,14 @@ export class DaysService {
 
   async update(id: number, day: UpdateDayDto): Promise<Day> {
     const anDay = Object.assign(new Day(), day)
-    await this.repo.updateById(id, anDay)
-    const upatedDay = await this.repo.findOneById(id)
+    await this.repo.update(id, anDay)
+    const upatedDay = await this.repo.findOne(id)
     //
     return upatedDay
   }
 
   async delete(id: number) {
-    const item = await this.repo.findOneById(id)
+    const item = await this.repo.findOne(id)
     await this.repo.remove(item)
   }
 

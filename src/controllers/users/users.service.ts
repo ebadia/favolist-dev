@@ -1,4 +1,4 @@
-import { Component } from '@nestjs/common'
+import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
 
@@ -12,7 +12,7 @@ import { UpdateUserDto } from './dto/update-user.dto'
 import { AddRoleDto } from './dto/add-role.dto'
 import { CreateShopDto } from '../shops/dto/create-shop.dto'
 
-@Component()
+@Injectable()
 export class UsersService {
   constructor(
     @InjectRepository(User) private readonly usersRepo: Repository<User>
@@ -24,7 +24,7 @@ export class UsersService {
 
   async findOne(id: number): Promise<User> {
     // I can do this because I have added option { select: false } in @Column for password
-    return await this.usersRepo.findOneById(id, { relations: ['orders'] })
+    return await this.usersRepo.findOne(id, { relations: ['orders'] })
   }
 
   async create(user: CreateUserDto): Promise<CreateUserDto> {
@@ -39,7 +39,7 @@ export class UsersService {
       .where('id=:id', { id })
       .execute()
 
-    return await this.usersRepo.findOneById(id)
+    return await this.usersRepo.findOne(id)
   }
 
   async addRole(id: number, role: AddRoleDto): Promise<User> {
@@ -49,19 +49,19 @@ export class UsersService {
       .of(id)
       .add(role.id)
 
-    return await this.usersRepo.findOneById(id)
+    return await this.usersRepo.findOne(id)
   }
 
   async addShopToUser(id: number, shop: CreateShopDto): Promise<User> {
-    const user = await this.usersRepo.findOneById(id, { relations: ['shops'] })
+    const user = await this.usersRepo.findOne(id, { relations: ['shops'] })
     const aShop = Object.assign(new Shop(), shop)
     user.shops.push(aShop)
     await this.usersRepo.save(user)
-    return await this.usersRepo.findOneById(id, { relations: ['shops'] })
+    return await this.usersRepo.findOne(id, { relations: ['shops'] })
   }
 
   async removeShopFromUser(userId: number, shopId: number): Promise<User> {
-    const user = await this.usersRepo.findOneById(userId, {
+    const user = await this.usersRepo.findOne(userId, {
       relations: ['shops']
     })
     const aShop = user.shops.filter(obj => {
@@ -69,11 +69,11 @@ export class UsersService {
     })
     user.shops = aShop
     await this.usersRepo.save(user)
-    return await this.usersRepo.findOneById(userId, { relations: ['shops'] })
+    return await this.usersRepo.findOne(userId, { relations: ['shops'] })
   }
 
   async delete(id: number): Promise<void> {
-    const user = await this.usersRepo.findOneById(id)
+    const user = await this.usersRepo.findOne(id)
     await this.usersRepo.remove(user)
 
     // await this.usersRepo
@@ -88,11 +88,11 @@ export class UsersService {
   }
 
   async findOneWithShops(id: number): Promise<User> {
-    return await this.usersRepo.findOneById(id, { relations: ['shops'] })
+    return await this.usersRepo.findOne(id, { relations: ['shops'] })
   }
 
   async findOneAdminShop(id: number): Promise<User> {
-    return await this.usersRepo.findOneById(id, { relations: ['shop'] })
+    return await this.usersRepo.findOne(id, { relations: ['shop'] })
   }
 
   async saveOrder(user: User): Promise<User> {

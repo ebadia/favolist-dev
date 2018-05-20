@@ -1,6 +1,6 @@
-import { Component, Inject } from '@nestjs/common'
+import { Injectable, Inject } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
-import { Repository } from 'typeorm'
+import { Repository, Connection } from 'typeorm'
 import {
   WebSocketGateway,
   SubscribeMessage,
@@ -24,13 +24,14 @@ import { UpdateShopDto } from '../shops/dto/update-shop.dto'
 import { Item } from '../../entities/Item.entity'
 import { CreateItemDto } from '../items/dto/create-item.dto'
 
-@Component()
+@Injectable()
 @WebSocketGateway()
 export class OrdersService {
   @WebSocketServer() server
 
   constructor(
     @InjectRepository(Order) private readonly ordersRepo: Repository<Order>,
+    private _conection: Connection
   ) {}
 
   async findAll(): Promise<Order[]> {
@@ -49,14 +50,14 @@ export class OrdersService {
   async find(id: number): Promise<Order> {
     console.log('GET CONTROLLER')
     const total = await Order.getOrderTotal(id)
-    const order = await this.ordersRepo.findOneById(id, {
+    const order = await this.ordersRepo.findOne(id, {
       relations: ['items', 'items.product']
     })
 
     return Object.assign(order, {
       total: total[0].sum
     })
-    // return await this.ordersRepo.findOneById( id, { relations: ['items', 'items.product']})
+    // return await this.ordersRepo.findOne( id, { relations: ['items', 'items.product']})
   }
 
   async create(order: CreateOrderDto): Promise<Order> {
@@ -70,13 +71,13 @@ export class OrdersService {
 
   async update(id: number, order: UpdateOrderDto): Promise<Order> {
     const anOrder = Object.assign(new Order(), order)
-    await this.ordersRepo.updateById(id, anOrder)
-    return await this.ordersRepo.findOneById(id)
+    await this.ordersRepo.update(id, anOrder)
+    return await this.ordersRepo.findOne(id)
   }
 
   async delete(id: number) {
     // await this.ordersRepo.removeById(id)
-    const anOrder = await this.ordersRepo.findOneById(id)
+    const anOrder = await this.ordersRepo.findOne(id)
     await this.ordersRepo.remove(anOrder)
   }
 
@@ -132,12 +133,12 @@ export class OrdersService {
   }
 
   async addItemToOrder(id: number, item: Item): Promise<Order> {
-    const order = await this.ordersRepo.findOneById(id, {
+    const order = await this.ordersRepo.findOne(id, {
       relations: ['items']
     })
     order.items.push(item)
     await this.ordersRepo.save(order)
-    return await this.ordersRepo.findOneById(id, { relations: ['items'] })
+    return await this.ordersRepo.findOne(id, { relations: ['items'] })
   }
 
   async findFromUser(id: number, date: string): Promise<Order[]> {
@@ -186,6 +187,12 @@ export class OrdersService {
       .andWhere('order.shop.id=:shopId', { shopId })
       .andWhere('order.day>=:date', { date })
       .getMany()
+  }
+
+  async dashboard(date: string): Promise<any> {
+    return await this._conection.query(
+      `SELECT * from dashboard WHERE day = '${date}'`
+    )
   }
 
   // **************************

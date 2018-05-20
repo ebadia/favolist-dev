@@ -1,7 +1,7 @@
 import {
   Module,
   NestModule,
-  MiddlewaresConsumer,
+  MiddlewareConsumer,
   RequestMethod
 } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
@@ -15,14 +15,15 @@ import { User } from '../../entities/User.entity'
 
 @Module({
   controllers: [AccountsController],
-  components: [AccountsService, SFJwtStrategy],
+  providers: [AccountsService, SFJwtStrategy],
   imports: [TypeOrmModule.forFeature([User])]
 })
 export class AccountsModule implements NestModule {
-  public configure(consumer: MiddlewaresConsumer) {
+  public configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(passport.authenticate('jwt', { session: false }))
-      .forRoutes({ path: '/accounts/authorized', method: RequestMethod.GET })
+      .forRoutes('/accounts/authorized')
+      // .forRoutes({ path: '/accounts/authorized', method: RequestMethod.GET })
       .apply(CorsMiddleware)
       .forRoutes(AccountsController)
   }

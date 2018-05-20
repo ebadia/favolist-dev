@@ -53,7 +53,9 @@ export class OrdersController {
     @Param('status') status
   ): Promise<Order[]> {
     // const date = moment().local().format('YYYY-MM-DD')
-    const date = mt().tz('Europe/Madrid').format('YYYY-MM-DD')
+    const date = mt()
+      .tz('Europe/Madrid')
+      .format('YYYY-MM-DD')
 
     return await this.ordersService.findFromShopStatus(id, date, status)
   }
@@ -134,7 +136,9 @@ export class OrdersController {
     id
   ): Promise<Order[]> {
     // const date = moment().local().format('YYYY-MM-DD')
-    const date = mt().tz('Europe/Madrid').format('YYYY-MM-DD')
+    const date = mt()
+      .tz('Europe/Madrid')
+      .format('YYYY-MM-DD')
     return await this.ordersService.findFromShop(id, date)
   }
 
@@ -144,7 +148,9 @@ export class OrdersController {
     id
   ): Promise<Order[]> {
     // const date = moment().local().format('YYYY-MM-DD')
-    const date = mt().tz('Europe/Madrid').format('YYYY-MM-DD')
+    const date = mt()
+      .tz('Europe/Madrid')
+      .format('YYYY-MM-DD')
     return await this.ordersService.findFromUser(id, date)
   }
 
@@ -156,7 +162,9 @@ export class OrdersController {
     shopId
   ): Promise<Order[]> {
     // const date = moment().local().format('YYYY-MM-DD')
-    const date = mt().tz('Europe/Madrid').format('YYYY-MM-DD')
+    const date = mt()
+      .tz('Europe/Madrid')
+      .format('YYYY-MM-DD')
     return await this.ordersService.findFromUserShop(userId, shopId, date)
   }
 
@@ -168,7 +176,9 @@ export class OrdersController {
     shopId
   ): Promise<Order[]> {
     // const date = moment().local().format('YYYY-MM-DD')
-    const date = mt().tz('Europe/Madrid').format('YYYY-MM-DD')
+    const date = mt()
+      .tz('Europe/Madrid')
+      .format('YYYY-MM-DD')
     return await this.ordersService.findFromFromUserShop(userId, shopId, date)
   }
 
@@ -181,4 +191,8 @@ export class OrdersController {
     return await this.ordersService.findFromShop(id, date)
   }
 
+  @Get('/dashboard/:date')
+  async getDashboardFromDate(@Param('date') date): Promise<any> {
+    return await this.ordersService.dashboard(date)
+  }
 }

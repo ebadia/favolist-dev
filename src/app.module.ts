@@ -1,7 +1,7 @@
 import {
   Module,
   NestModule,
-  MiddlewaresConsumer,
+  MiddlewareConsumer,
   RequestMethod
 } from '@nestjs/common'
 
@@ -19,6 +19,7 @@ import { OrdersModule } from './controllers/orders/orders.module'
 import { ItemsModule } from './controllers/items/items.module'
 import { MailsModule } from './controllers/mails/mails.module'
 import { EventsModule } from './controllers/events/events.module'
+import { AppService } from './app.service'
 
 import { LoggerMiddleware } from './common/middlewares/logger.middleware'
 import { RequestTime } from './common/middlewares/requestTime.middleware'
@@ -41,37 +42,45 @@ import { DaysModule } from './controllers/days/days.module'
     DaysModule,
     TypeOrmModule.forRoot(),
     MailerModule.forRoot({
-      transport: {
-        host: 'smtp-relay.sendinblue.com',
-        port: 587,
-        secure: false,
+      transport: sendinBlue({
         auth: {
-          user: 'enric.badia@gmail.com',
-          pass: 'RCn70JzTVk9r16mj'
+          apiUrl: 'https://api.sendinblue.com/v3/',
+          apiKey:
+            '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'
         }
-      },
-      defaults:{
+      }),
+      defaults: {
         from: '"favolist-mailer" <noreply@favolist.com>'
       },
       templateDir: './src/common/email'
     })
   ],
+
+  // transport: {
+  //   host: 'smtp-relay.sendinblue.com',
+  //   port: 587,
+  //   secure: false,
+  //   auth: {
+  //     user: 'enric.badia@gmail.com',
+  //     pass: 'RCn70JzTVk9r16mj'
+  //   }
+  // },
+
   controllers: [AppController],
-  components: [],
+  providers: [AppService],
   exports: []
 })
 export class ApplicationModule implements NestModule {
   constructor() {}
 
-  configure(consumer: MiddlewaresConsumer): void {
+  configure(consumer: MiddlewareConsumer): void {
     consumer
       .apply(LoggerMiddleware)
       .with('ApplicationModule')
       .forRoutes(AppController)
 
       .apply(CorsMiddleware)
-      .forRoutes({ path: '*', method: RequestMethod.ALL })
+      .forRoutes('*')
+    // .forRoutes({ path: '*', method: RequestMethod.ALL })
   }
-
-
 }

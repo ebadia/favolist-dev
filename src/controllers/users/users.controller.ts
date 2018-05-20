@@ -28,8 +28,8 @@ import { MailsService } from '../mails/mails.service'
 export class UsersController {
   constructor(
     private readonly usersService: UsersService,
-    private readonly mailService: MailsService,
-    ) {}
+    private readonly mailService: MailsService
+  ) {}
 
   @Get()
   async findAll(): Promise<User[]> {

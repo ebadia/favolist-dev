@@ -1,7 +1,7 @@
 import {
   Module,
   NestModule,
-  MiddlewaresConsumer,
+  MiddlewareConsumer,
   RequestMethod
 } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
@@ -19,7 +19,7 @@ import { ShopsModule } from '../shops/shops.module'
 import { ItemsModule } from '../items/items.module'
 
 @Module({
-  components: [OrdersService],
+  providers: [OrdersService],
   controllers: [OrdersController],
   imports: [
     TypeOrmModule.forFeature([Order]),
@@ -29,7 +29,7 @@ import { ItemsModule } from '../items/items.module'
   ]
 })
 export class OrdersModule implements NestModule {
-  public configure(consumer: MiddlewaresConsumer) {
+  public configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(passport.authenticate('jwt', { session: false }))
       .forRoutes(OrdersController)

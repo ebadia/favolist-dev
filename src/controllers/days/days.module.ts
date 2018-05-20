@@ -1,7 +1,7 @@
 import {
   Module,
   NestModule,
-  MiddlewaresConsumer,
+  MiddlewareConsumer,
   RequestMethod
 } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
@@ -15,13 +15,13 @@ import { DaysService } from './days.service'
 import { Day } from '../../entities/Day.entity'
 
 @Module({
-  components: [DaysService],
+  providers: [DaysService],
   controllers: [DaysController],
   imports: [TypeOrmModule.forFeature([Day])],
   exports: [DaysService]
 })
 export class DaysModule implements NestModule {
-  public configure(consumer: MiddlewaresConsumer) {
+  public configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(passport.authenticate('jwt', { session: false }))
       .forRoutes(DaysController)
