@@ -1,8 +1,16 @@
-import { IsString, IsInt, IsNumber, IsArray, IsOptional, IsNotEmpty } from 'class-validator'
-
+import {
+  IsString,
+  IsInt,
+  IsNumber,
+  IsArray,
+  IsOptional,
+  IsNotEmpty
+} from 'class-validator'
 
 export class CreateOrderDto {
-  @IsOptional() @IsInt() readonly id: number
+  @IsOptional()
+  @IsInt()
+  readonly id: number
   @IsString() readonly day: string
   @IsString() readonly hour: string
   @IsString() readonly status: string

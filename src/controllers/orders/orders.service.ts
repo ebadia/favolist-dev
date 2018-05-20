@@ -51,7 +51,7 @@ export class OrdersService {
     console.log('GET CONTROLLER')
     const total = await Order.getOrderTotal(id)
     const order = await this.ordersRepo.findOne(id, {
-      relations: ['items', 'items.product']
+      relations: ['items']
     })
 
     return Object.assign(order, {
@@ -132,13 +132,18 @@ export class OrdersService {
     return finded
   }
 
-  async addItemToOrder(id: number, item: Item): Promise<Order> {
+  async addItemToOrder(id: number, item: any): Promise<Order> {
+    // save item first
+    const theItem = await this._conection.manager.save(
+      Object.assign(new Item(), item)
+    )
+    // retrieve the order to relate the item
     const order = await this.ordersRepo.findOne(id, {
       relations: ['items']
     })
-    order.items.push(item)
-    await this.ordersRepo.save(order)
-    return await this.ordersRepo.findOne(id, { relations: ['items'] })
+    // add inserted item to order  and return order
+    order.items.push(theItem)
+    return await this.ordersRepo.save(order)
   }
 
   async findFromUser(id: number, date: string): Promise<Order[]> {
