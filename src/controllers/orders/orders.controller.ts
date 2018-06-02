@@ -168,7 +168,7 @@ export class OrdersController {
     return await this.ordersService.findFromUserShop(userId, shopId, date)
   }
 
-  @Get('/users/:userId/shops/:shopId/day(:day')
+  @Get('/users/:userId/shops/:shopId/day/:day')
   async findDayFromUserShop(
     @Param('userId', new ParseIntPipe())
     userId,
