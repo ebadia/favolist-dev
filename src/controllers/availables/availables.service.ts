@@ -74,6 +74,19 @@ export class AvailablesService {
           "available"."stock" AS "availableStock",
           "available"."stockOut" AS "availableStockOut",
           "available"."productId",
+
+          ( SELECT sum(item_1.quantity) AS sum
+           FROM (item item_1
+             LEFT JOIN "order" ON (("order".id = item_1."orderId")))
+            WHERE
+            (
+              (
+                ((item_1.place)::text = 'APP'::text) OR ((item_1.place)::text = 'TEL'::text))
+                AND ("order".day = available.day)
+                AND (item_1."productId" = product.id) AND "available"."day" = '${date}'
+              )
+          ) AS ventaapp,
+
           "product".*,
           "shop"."name" AS "shop",
           "shop"."id" AS "shopid"
