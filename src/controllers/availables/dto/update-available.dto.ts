@@ -18,10 +18,10 @@ export class UpdateAvailableDto {
   readonly day: string
   @IsOptional()
   @IsNumber()
-  readonly availableStock: number
+  readonly stock: number
   @IsOptional()
   @IsNumber()
-  readonly availableStockOut: number
+  readonly stockOut: number
   @IsOptional()
   @IsNumber()
   readonly price: number
