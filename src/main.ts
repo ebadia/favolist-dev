@@ -4,6 +4,7 @@ import { ApplicationModule } from './app.module'
 async function bootstrap() {
   const app = await NestFactory.create(ApplicationModule)
   app.setGlobalPrefix('api/v1')
-  await app.listen(8080)
+  // tslint:disable-next-line:radix
+  await app.listen(parseInt(process.env.PORT) || 8080)
 }
 bootstrap()
