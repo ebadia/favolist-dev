@@ -1,3 +1,6 @@
+import * as dotenv from 'dotenv'
+dotenv.config()
+
 import {
   Module,
   NestModule,
@@ -28,6 +31,18 @@ import { MailerModule } from '@nest-modules/mailer'
 import * as sendinBlue from 'nodemailer-sendinblue-transport'
 import { DaysModule } from './controllers/days/days.module'
 
+const dbConfig: any = {
+  url: process.env.DATABASE_URL,
+  type: process.env.TYPEORM_CONNECTION,
+  synchronize: process.env.TYPEORM_SYNCHRONIZE,
+  logging: process.env.TYPEORM_LOGGING,
+  entities: [process.env.TYPEORM_ENTITIES],
+  migrations: [process.env.TYPEORM_MIGRATIONS],
+  cli: {
+    entitiesDir: process.env.TYPEORM_ENTITIES_DIR
+  }
+}
+
 @Module({
   imports: [
     UsersModule,
@@ -40,13 +55,12 @@ import { DaysModule } from './controllers/days/days.module'
     EventsModule,
     MailsModule,
     DaysModule,
-    TypeOrmModule.forRoot(),
+    TypeOrmModule.forRoot(dbConfig),
     MailerModule.forRoot({
       transport: sendinBlue({
         auth: {
-          apiUrl: 'https://api.sendinblue.com/v3/',
-          apiKey:
-            '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'
+          apiUrl: process.env.SENDINBLUE_URL,
+          apiKey: process.env.SENDINBLUE_APIKEY
         }
       }),
       defaults: {
