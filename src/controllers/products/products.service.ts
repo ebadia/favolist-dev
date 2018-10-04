@@ -1,4 +1,10 @@
-import { Injectable } from '@nestjs/common'
+import * as dotenv from 'dotenv'
+dotenv.config()
+import {
+  Injectable,
+  NotFoundException,
+  BadRequestException
+} from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Connection, Repository, getRepository } from 'typeorm'
 import * as moment from 'moment'
@@ -17,7 +23,8 @@ export class ProductsService {
 
   async findAll(): Promise<Product[]> {
     return await this.productsRepo.find({
-      select: ['id', 'name', 'price', 'description', 'image']
+      select: ['id', 'name', 'price', 'description', 'image'],
+      order: { id: 'ASC' }
     })
   }
 
@@ -141,5 +148,23 @@ export class ProductsService {
       .leftJoinAndSelect('product.days', 'day')
       .where('day.id=:date', { date: moment().format('E') })
       .getMany()
+  }
+
+  async upload(file: any, producto: number, req: any): Promise<Product> {
+    const item = await this.productsRepo.findOne(producto)
+    if (!item) {
+      throw new NotFoundException()
+    }
+
+    // const newEspacioFoto = await this.repo.create({
+    //   url: req.file.url,
+    //   espacio: theEspacio
+    // })
+
+    try {
+      return await this.productsRepo.save({ ...item, image: req.file.url })
+    } catch (err) {
+      throw new BadRequestException(err.message)
+    }
   }
 }
